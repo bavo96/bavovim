@@ -1,3 +1,5 @@
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 
 " Auto complete
@@ -17,8 +19,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'preservim/nerdcommenter'
 
-" Auto complete for python
-
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'tweekmonster/startuptime.vim'
@@ -30,6 +30,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 " NerdTree highlighter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" ale code analysis
+
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -80,6 +83,9 @@ map <C-l> <C-w>l
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " Highlighter
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
@@ -114,7 +120,7 @@ let g:python3_host_prog = '/Users/lap00983/opt/anaconda3/envs/py37/bin/python'
 let g:deoplete#sources#jedi#statement_length = 50
 " python2
 let g:loaded_python_provider = 0
-let g:python2_host_prog = '' 
+let g:python2_host_prog = ''
 let g:python2_host_skip_check=1
 " ruby
 let g:loaded_ruby_provider = 0
@@ -124,7 +130,14 @@ let g:loaded_node_provider = 0
 " Auto pairs
 let g:AutoPairsShortcutFastwrap = "<C-A>"
 
+" Ale
+let g:ale_disable_lsp = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['yapf']}
+let g:ale_fix_on_save = 0
+
+
 source $HOME/.config/nvim/coc.vim
-
-
-

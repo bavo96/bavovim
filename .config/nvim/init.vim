@@ -1,40 +1,4 @@
-let g:ale_disable_lsp = 1
-
-call plug#begin('~/.vim/plugged')
-
-" Auto complete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Text colors
-Plug 'morhetz/gruvbox'
-
-" Auto create pairs for special characters
-Plug 'jiangmiao/auto-pairs'
-
-"Plug 'scrooloose/syntastic'
-Plug 'preservim/nerdtree'
-
-Plug 'tpope/vim-surround'
-
-Plug 'preservim/nerdcommenter'
-
-Plug 'norcalli/nvim-colorizer.lua'
-
-Plug 'tweekmonster/startuptime.vim'
-
-" searching
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-
-" NerdTree highlighter
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" ale code analysis
-
-Plug 'dense-analysis/ale'
-
-call plug#end()
+set mouse=a
 
 set encoding=utf-8
 set number relativenumber
@@ -108,7 +72,9 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -138,6 +104,44 @@ let g:ale_sign_warning = '--'
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['yapf']}
 let g:ale_fix_on_save = 0
+let g:ale_disable_lsp = 1
 
 
 source $HOME/.config/nvim/coc.vim
+
+call plug#begin('~/.vim/plugged')
+
+" Auto complete
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Text colors
+Plug 'morhetz/gruvbox'
+
+" Auto create pairs for special characters
+Plug 'jiangmiao/auto-pairs'
+
+"Plug 'scrooloose/syntastic'
+Plug 'preservim/nerdtree'
+
+Plug 'tpope/vim-surround'
+
+Plug 'preservim/nerdcommenter'
+
+Plug 'norcalli/nvim-colorizer.lua'
+
+Plug 'tweekmonster/startuptime.vim'
+
+" searching
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+
+" NerdTree highlighter
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" ale code analysis
+
+Plug 'dense-analysis/ale'
+
+call plug#end()
+

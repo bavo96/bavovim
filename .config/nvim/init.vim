@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Auto complete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Text colors
@@ -38,16 +37,19 @@ set mouse=a
 
 set encoding=utf-8
 set number relativenumber
-syntax enable
 set noswapfile
 set scrolloff=7
 set backspace=indent,eol,start
 
+syntax enable
+
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+
 set autoindent
+
 set fileformat=unix
 
 map z :echo 'Current time is ' . strftime('%c')<CR>
@@ -118,19 +120,22 @@ endfunction
 
 " python3
 let g:python3_host_skip_check=1
-let g:python3_host_prog = '/Users/lap00983/opt/anaconda3/envs/py37/bin/python'
+let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
 let g:deoplete#sources#jedi#statement_length = 50
+
 " python2
 let g:loaded_python_provider = 0
 let g:python2_host_prog = ''
 let g:python2_host_skip_check=1
+
 " ruby
 let g:loaded_ruby_provider = 0
+
 " node.js
 let g:loaded_node_provider = 0
 
 " Auto pairs
-let g:AutoPairsShortcutFastwrap = "<C-A>"
+" let g:AutoPairsShortcutFastwrap = "<C-A>"
 
 " Ale
 let g:ale_disable_lsp = 1

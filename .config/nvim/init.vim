@@ -21,8 +21,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'tweekmonster/startuptime.vim'
 
 " Vim airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " searching
 Plug 'junegunn/fzf.vim'

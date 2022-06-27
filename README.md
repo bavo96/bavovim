@@ -7,7 +7,7 @@ My custom vim's settings.
 - Set color for terminal
 
 # Nvim
-- Install packages in vim-plug: `:PlugInstall`
+- Install plugins in vim-plug: `:PlugInstall`
 
 # Coc Nvim
 - To enable intellisense for `coc-settings.json`: `:CocInstall coc-json`

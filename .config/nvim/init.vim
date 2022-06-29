@@ -1,23 +1,28 @@
 call plug#begin('~/.vim/plugged')
 
+" ale code analysis
+" Plug 'dense-analysis/ale'
+
+" Auto create pairs for special characters
+" Plug 'jiangmiao/auto-pairs'
+
+" Plug 'tpope/vim-surround'
+
 " Auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Text colors
 Plug 'morhetz/gruvbox'
-
-" Auto create pairs for special characters
-Plug 'jiangmiao/auto-pairs'
-
-"Plug 'scrooloose/syntastic'
-Plug 'preservim/nerdtree'
-
-Plug 'tpope/vim-surround'
-
-Plug 'preservim/nerdcommenter'
-
+" Vim color
 Plug 'norcalli/nvim-colorizer.lua'
 
+" Nerd Tree
+Plug 'preservim/nerdtree'
+
+" Commenter
+Plug 'preservim/nerdcommenter'
+
+" Check vim startup time
 Plug 'tweekmonster/startuptime.vim'
 
 " Vim airline
@@ -28,12 +33,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 
-" NerdTree highlighter
+" NerdTree git highlighter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" ale code analysis
-
-Plug 'dense-analysis/ale'
+" NerdTree icon
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -47,16 +51,13 @@ set backspace=indent,eol,start
 
 syntax enable
 
-set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
-set autoindent
+" set expandtab
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set autoindent
 
 set fileformat=unix
-
-map z :echo 'Current time is ' . strftime('%c')<CR>
 
 let mapleader = ' '
 
@@ -89,10 +90,7 @@ map <C-l> <C-w>l
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" Highlighter
+" Nerdtree git Highlighter
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -106,21 +104,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 
-"Coc-vim
-"" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" COC config
+" \ 'coc-eslint',
+" \ 'coc-prettier',
+let g:coc_global_extensions = [
+      \ 'coc-snippets',
+      \ 'coc-pairs',
+      \ 'coc-json',
+      \ 'coc-pyright'
+      \ ]
 
 " python3
 let g:python3_host_skip_check=1
@@ -138,18 +131,30 @@ let g:loaded_ruby_provider = 0
 " node.js
 let g:loaded_node_provider = 0
 
+" perl
+let g:loaded_perl_provider = 0
+
 " Auto pairs
 " let g:AutoPairsShortcutFastwrap = "<C-A>"
 
 " Ale
-let g:ale_disable_lsp = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_linters = {'python': ['pylint']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['yapf']}
-let g:ale_fix_on_save = 0
-let g:ale_disable_lsp = 1
+" let g:ale_disable_lsp = 1
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+" let g:ale_linters = {'python': ['pylint']}
+" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['yapf']}
+" let g:ale_fix_on_save = 0
+" let g:ale_disable_lsp = 1
 
+" vim airline
+let g:airline#extensions#branch#enabled=1
+let g:airline_powerline_fonts = 1
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" prettier
+" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 source $HOME/.config/nvim/coc.vim

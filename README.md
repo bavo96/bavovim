@@ -10,4 +10,13 @@ My custom vim's settings.
 - Install plugins in vim-plug: `:PlugInstall`
 
 # Coc Nvim
-- To enable intellisense for `coc-settings.json`: `:CocInstall coc-json`
+- Install nodejs >= 12.12
+  + Change node version: `nvm use 16`
+  + Check node version: `node -v`
+
+# Vim-devicons
+- Install these two on MacOS:
+  + `brew install --cask font-hack-nerd-font` 
+  + `brew tap homebrew/cask-fonts`
+- Run: `fc-cache -f -v`
+- Choose `Hack Nerd Font (Mono)` on Terminal

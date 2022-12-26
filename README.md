@@ -5,6 +5,7 @@ My custom vim's settings.
 - Install neovim
 - Install tmux
 - Set color for terminal
+- Install vim-plug
 
 # Nvim
 - Install plugins in vim-plug: `:PlugInstall`

@@ -6,6 +6,7 @@ My custom vim's settings.
 - Install tmux
 - Set color for terminal
 - Install vim-plug
+- Install pynvim (for python3)
 
 # Nvim
 - Install plugins in vim-plug: `:PlugInstall`

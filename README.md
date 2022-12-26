@@ -9,6 +9,9 @@ My custom vim's settings.
 - Install pynvim (for python3)
 - Install NerdFonts (for this case install DejaVu): https://www.nerdfonts.com/font-downloads
 
+# Tmux
+- Update modification: `tmux source ~/.tmux.conf`
+
 # Nvim
 - Install plugins in vim-plug: `:PlugInstall`
 

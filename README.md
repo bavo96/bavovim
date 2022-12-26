@@ -28,4 +28,5 @@ My custom vim's settings.
 - Choose `Hack Nerd Font (Mono)` on Terminal
 
 # Other commands
-- Swap caplocks/ctrl on Ubuntu: setxkbmap -layout us -option ctrl:swapcaps
+- Swap caplocks/ctrl on Ubuntu: `setxkbmap -layout us -option ctrl:swapcaps`
+- Show small icons on Ubuntu's favorite bar: `gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed false`

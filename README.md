@@ -26,3 +26,6 @@ My custom vim's settings.
   + `brew tap homebrew/cask-fonts`
 - Run: `fc-cache -f -v`
 - Choose `Hack Nerd Font (Mono)` on Terminal
+
+# Other commands
+- Swap caplocks/ctrl on Ubuntu: setxkbmap -layout us -option ctrl:swapcaps

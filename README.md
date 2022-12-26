@@ -7,6 +7,7 @@ My custom vim's settings.
 - Set color for terminal
 - Install vim-plug
 - Install pynvim (for python3)
+- Install NerdFonts (for this case install DejaVu): https://www.nerdfonts.com/font-downloads
 
 # Nvim
 - Install plugins in vim-plug: `:PlugInstall`

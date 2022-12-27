@@ -39,6 +39,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " NerdTree icon
 Plug 'ryanoasis/vim-devicons'
 
+" Tabline 
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+
+
 call plug#end()
 
 set mouse=a
@@ -84,25 +89,25 @@ let NERDTreeQuitOnOpen=0
 let g:NERDTreeMinimalUI=1
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <C-f> :NERDTreeToggle<CR>
+nmap <C-r> :NERDTreeToggle<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 
 " Nerdtree git Highlighter
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+" let g:NERDTreeGitStatusIndicatorMapCustom = {
+"                 \ 'Modified'  :'✹',
+"                 \ 'Staged'    :'✚',
+"                 \ 'Untracked' :'✭',
+"                 \ 'Renamed'   :'➜',
+"                 \ 'Unmerged'  :'═',
+"                 \ 'Deleted'   :'✖',
+"                 \ 'Dirty'     :'✗',
+"                 \ 'Ignored'   :'☒',
+"                 \ 'Clean'     :'✔︎',
+"                 \ 'Unknown'   :'?',
+"                 \ }
 
 
 " COC config

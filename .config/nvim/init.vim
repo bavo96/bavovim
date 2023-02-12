@@ -43,10 +43,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
+" Show indent
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 
 call plug#end()
 
-set mouse=a
+set mouse+=a
 
 set encoding=utf-8
 set number relativenumber
@@ -61,6 +64,7 @@ syntax enable
 " set softtabstop=2
 " set shiftwidth=2
 " set autoindent
+
 
 set fileformat=unix
 
@@ -89,26 +93,12 @@ let NERDTreeQuitOnOpen=0
 let g:NERDTreeMinimalUI=1
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <C-r> :NERDTreeToggle<CR>
+nmap <C-p> :NERDTreeToggle<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 " map <C-j> <C-w>j
+
 " map <C-k> <C-w>k
-
-" Nerdtree git Highlighter
-" let g:NERDTreeGitStatusIndicatorMapCustom = {
-"                 \ 'Modified'  :'✹',
-"                 \ 'Staged'    :'✚',
-"                 \ 'Untracked' :'✭',
-"                 \ 'Renamed'   :'➜',
-"                 \ 'Unmerged'  :'═',
-"                 \ 'Deleted'   :'✖',
-"                 \ 'Dirty'     :'✗',
-"                 \ 'Ignored'   :'☒',
-"                 \ 'Clean'     :'✔︎',
-"                 \ 'Unknown'   :'?',
-"                 \ }
-
 
 " COC config
 " \ 'coc-eslint',
@@ -119,6 +109,8 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-pyright'
       \ ]
+
+
 
 " python3
 let g:python3_host_skip_check=1

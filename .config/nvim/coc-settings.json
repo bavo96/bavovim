@@ -1,12 +1,13 @@
 {
-  // Pyright
-  "coc.preferences.formatOnSaveFiletypes": [
-    "python",
-    "json"
-  ],
-  "pyright.enable": true,
-  "python.linting.pylintEnabled": true,
-  "python.formatting.autopep8Args": [
-    "--indent-size=2"
-  ]
+	// Pyright
+	"coc.preferences.formatOnSaveFiletypes": [
+		"python",
+		"json"
+	],
+	"pyright.enable": true,
+	"python.linting.pylintEnabled": true,
+	"python.formatting.autopep8Args": [
+		"--indent-size=2"
+	],
+	"diagnostic.checkCurrentLine": true
 }

@@ -1,20 +1,19 @@
 call plug#begin('~/.vim/plugged')
 
-" ale code analysis
-" Plug 'dense-analysis/ale'
-
 " Auto create pairs for special characters
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
-" Plug 'tpope/vim-surround'
-
-" Auto complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Delete/change/add surrounding in pairs
+Plug 'tpope/vim-surround'
 
 " Text colors
 Plug 'morhetz/gruvbox'
+
 " Vim color
-Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'norcalli/nvim-colorizer.lua'
+
+" Auto complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Nerd Tree
 Plug 'preservim/nerdtree'
@@ -25,29 +24,27 @@ Plug 'preservim/nerdcommenter'
 " Check vim startup time
 Plug 'tweekmonster/startuptime.vim'
 
-" Vim airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " searching
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 
-" NerdTree git highlighter
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " NerdTree icon
 Plug 'ryanoasis/vim-devicons'
 
-" Tabline 
+" Tabline (at the top)
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+
+" Vim airline (at the bottom)
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Show indent
 Plug 'lukas-reineke/indent-blankline.nvim'
 
-
 call plug#end()
+
+colorscheme gruvbox
 
 set mouse+=a
 
@@ -59,22 +56,22 @@ set backspace=indent,eol,start
 
 syntax enable
 
+" Set tab and indent
 " set expandtab
 " set tabstop=2
 " set softtabstop=2
 " set shiftwidth=2
 " set autoindent
 
-
 set fileformat=unix
 
+" Set space as mapleader
 let mapleader = ' '
-
-colorscheme gruvbox
+nnoremap <SPACE> <Nop>
 
 " NERDCommenter
-nmap <C-_> <Plug>NERDCommenterToggle
-vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+nmap <C-.> <Plug>NERDCommenterToggle
+vmap <C-.> <Plug>NERDCommenterToggle<CR>gv
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -91,14 +88,12 @@ let g:NERDToggleCheckAllLines = 1
 " NERDTree
 let NERDTreeQuitOnOpen=0
 let g:NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <C-p> :NERDTreeToggle<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
-" map <C-j> <C-w>j
-
-" map <C-k> <C-w>k
 
 " COC config
 " \ 'coc-eslint',
@@ -110,46 +105,27 @@ let g:coc_global_extensions = [
       \ 'coc-pyright'
       \ ]
 
-
-
 " python3
 let g:python3_host_skip_check=1
 let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
 let g:deoplete#sources#jedi#statement_length = 50
-
 " python2
 let g:loaded_python_provider = 0
 let g:python2_host_prog = ''
 let g:python2_host_skip_check=1
-
 " ruby
 let g:loaded_ruby_provider = 0
-
 " node.js
 let g:loaded_node_provider = 0
-
 " perl
 let g:loaded_perl_provider = 0
 
 " Auto pairs
 " let g:AutoPairsShortcutFastwrap = "<C-A>"
 
-" Ale
-" let g:ale_disable_lsp = 1
-" let g:ale_sign_column_always = 1
-" let g:ale_sign_error = '>>'
-" let g:ale_sign_warning = '--'
-" let g:ale_linters = {'python': ['pylint']}
-" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['yapf']}
-" let g:ale_fix_on_save = 0
-" let g:ale_disable_lsp = 1
-
 " vim airline
 let g:airline#extensions#branch#enabled=1
 let g:airline_powerline_fonts = 1
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " prettier
 " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument

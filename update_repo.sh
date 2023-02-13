@@ -8,3 +8,5 @@ cp ~/.config/nvim/coc.vim ./.config/nvim/coc.vim
 # tmux
 cp ~/.tmux.conf ./.tmux.conf
 
+# wezterm
+cp ~/.config/wezterm/wezterm.lua ./.config/wezterm/wezterm.lua

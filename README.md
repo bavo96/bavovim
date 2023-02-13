@@ -27,7 +27,10 @@ My custom vim's settings.
 - Run: `fc-cache -f -v`
 - Choose `Hack Nerd Font (Mono)` on Terminal
 
-# Other commands
+# Other commands in Ubuntu
 - Swap caplocks/ctrl on Ubuntu: 
   - `setxkbmap -layout us -option ctrl:swapcaps` (https://askubuntu.com/questions/33774/how-do-i-remap-the-caps-lock-and-ctrl-keys)
 - Show small icons on Ubuntu's favorite bar: `gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed false`
+- Preview file in Ubuntu: `sudo apt-get install gnome-sushi`
+- Mapping in vim: https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
+

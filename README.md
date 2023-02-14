@@ -8,6 +8,7 @@ My custom vim's settings.
 - Install vim-plug
 - Install pynvim (for python3)
 - Install NerdFonts (for this case install DejaVu): https://www.nerdfonts.com/font-downloads
+- Install oh my zsh https://ohmyz.sh/#install (only for MacOS)
 
 # Tmux
 - Update modification: `tmux source ~/.tmux.conf`

@@ -22,7 +22,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 
 " Check vim startup time
-Plug 'tweekmonster/startuptime.vim'
+Plug 'dstein64/vim-startuptime'
 
 " searching
 Plug 'junegunn/fzf.vim'

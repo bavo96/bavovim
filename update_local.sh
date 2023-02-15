@@ -13,5 +13,6 @@ cp ./.tmux.conf ~/.tmux.conf
 
 # wezterm
 cp ./.config/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+cp ./.config/wezterm/batman.jpeg ~/.config/wezterm/batman.jpeg
 
 

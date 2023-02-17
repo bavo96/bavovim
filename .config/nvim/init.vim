@@ -6,12 +6,6 @@ Plug 'jiangmiao/auto-pairs'
 " Delete/change/add surrounding in pairs
 Plug 'tpope/vim-surround'
 
-" Text colors
-Plug 'morhetz/gruvbox'
-
-" Vim color
-" Plug 'norcalli/nvim-colorizer.lua'
-
 " Auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -42,19 +36,25 @@ Plug 'vim-airline/vim-airline-themes'
 " Show indent
 Plug 'lukas-reineke/indent-blankline.nvim'
 
+" Text color
+" Plug 'morhetz/gruvbox'
+
+" Nvim color
+" Plug 'norcalli/nvim-colorizer.lua'
+
 call plug#end()
 
-colorscheme gruvbox
+" ##### VIM SECTION #####
 
-set mouse+=a
+" colorscheme gruvbox
+syntax enable
 
+set mouse=a
 set encoding=utf-8
 set number relativenumber
 set noswapfile
 set scrolloff=7
 set backspace=indent,eol,start
-
-syntax enable
 
 " Set tab and indent
 set expandtab
@@ -68,6 +68,8 @@ set fileformat=unix
 " Set space as mapleader
 let mapleader = ' '
 nnoremap <SPACE> <Nop>
+
+" ##### VIM SECTION ##### 
 
 " NERDCommenter
 nmap <C-.> <Plug>NERDCommenterToggle

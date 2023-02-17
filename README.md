@@ -8,7 +8,8 @@ My custom vim's settings.
 - Install vim-plug
 - Install pynvim (for python3)
 - Install NerdFonts (for this case install DejaVu): https://www.nerdfonts.com/font-downloads
-- Install oh my zsh https://ohmyz.sh/#install (only for MacOS)
+- (only for MacOS) Install oh my zsh https://ohmyz.sh/#install 
+- (only for MacOS) Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
 
 # Tmux
 - Update modification: `tmux source ~/.tmux.conf`

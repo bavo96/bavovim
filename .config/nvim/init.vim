@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
+" Smooth scroll
+Plug 'karb94/neoscroll.nvim'
+
 " Auto create pairs for special characters
 Plug 'jiangmiao/auto-pairs'
 
@@ -131,5 +134,8 @@ let g:airline_powerline_fonts = 1
 
 " prettier
 " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+" Smooth scroll
+lua require('neoscroll').setup()
 
 source $HOME/.config/nvim/coc.vim

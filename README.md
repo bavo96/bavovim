@@ -30,6 +30,7 @@ My custom vim's settings.
 - Choose `Hack Nerd Font (Mono)` on Terminal
 
 # Other commands in Ubuntu
+- Install gnome tweak to swap keys in Ubuntu
 - Swap caplocks/ctrl on Ubuntu: 
   - `setxkbmap -layout us -option ctrl:swapcaps` (https://askubuntu.com/questions/33774/how-do-i-remap-the-caps-lock-and-ctrl-keys)
 - Show small icons on Ubuntu's favorite bar: `gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed false`

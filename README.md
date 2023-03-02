@@ -29,6 +29,9 @@ My custom vim's settings.
 - Run: `fc-cache -f -v`
 - Choose `Hack Nerd Font (Mono)` on Terminal
 
+# Font
+- Error when using font in wezterm: https://github.com/wez/wezterm/issues/2660
+
 # Other commands in Ubuntu
 - Install gnome tweak to swap keys in Ubuntu
 - Swap caplocks/ctrl on Ubuntu: 

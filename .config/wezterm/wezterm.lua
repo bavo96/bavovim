@@ -20,7 +20,7 @@ return {
   },
   window_background_opacity = 1,
   text_background_opacity = 1,
-  font_size = 13,
+  font_size = 12,
   window_padding = {
     left = 0,
     right = 0,

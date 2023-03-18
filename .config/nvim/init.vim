@@ -1,16 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
-" Smooth scroll
-Plug 'karb94/neoscroll.nvim'
-
 " Auto create pairs for special characters
 Plug 'jiangmiao/auto-pairs'
 
 " Delete/change/add surrounding in pairs
 Plug 'tpope/vim-surround'
-
-" Auto complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Nerd Tree
 Plug 'preservim/nerdtree'
@@ -39,17 +33,23 @@ Plug 'vim-airline/vim-airline-themes'
 " Show indent
 Plug 'lukas-reineke/indent-blankline.nvim'
 
-" Text color
-" Plug 'morhetz/gruvbox'
-
 " Nvim color
-" Plug 'norcalli/nvim-colorizer.lua'
+Plug 'ellisonleao/gruvbox.nvim'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+"" Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
 
 call plug#end()
 
 " ##### VIM SECTION #####
 
-" colorscheme gruvbox
 syntax enable
 
 set mouse=a
@@ -66,21 +66,26 @@ set softtabstop=2
 set shiftwidth=2
 set autoindent
 
+" Turn off auto add a comment when newline
+set formatoptions-=ro
+
 set fileformat=unix
 
 " Set space as mapleader
 let mapleader = ' '
-nnoremap <SPACE> <Nop>
+" nnoremap <SPACE> <Nop>
 
 " ##### VIM SECTION ##### 
 
 " NERDCommenter
-nmap <C-.> <Plug>NERDCommenterToggle
-vmap <C-.> <Plug>NERDCommenterToggle<CR>gv
+filetype plugin on
+" nmap <leader>cc <plug>NERDComToggleComment
+" vmap <leader>cc <plug>NERDComToggleComment gv
+
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 0
+let g:NERDCompactSexyComs = 1
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 " Allow commenting and inverting empty lines (useful when commenting a region)
@@ -94,36 +99,12 @@ let g:NERDToggleCheckAllLines = 1
 let NERDTreeQuitOnOpen=0
 let g:NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
+let g:NERDTreeFileExtensionHighlightFullName = 1
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <C-p> :NERDTreeToggle<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
-
-" COC config
-" \ 'coc-eslint',
-" \ 'coc-prettier',
-let g:coc_global_extensions = [
-      \ 'coc-snippets',
-      \ 'coc-pairs',
-      \ 'coc-json',
-      \ 'coc-pyright'
-      \ ]
-
-" python3
-let g:python3_host_skip_check=1
-let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
-let g:deoplete#sources#jedi#statement_length = 50
-" python2
-let g:loaded_python_provider = 0
-let g:python2_host_prog = ''
-let g:python2_host_skip_check=1
-" ruby
-let g:loaded_ruby_provider = 0
-" node.js
-let g:loaded_node_provider = 0
-" perl
-let g:loaded_perl_provider = 0
 
 " Auto pairs
 " let g:AutoPairsShortcutFastwrap = "<C-A>"
@@ -132,10 +113,7 @@ let g:loaded_perl_provider = 0
 let g:airline#extensions#branch#enabled=1
 let g:airline_powerline_fonts = 1
 
-" prettier
-" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+" Import lua configuration
+lua require('init')
 
-" Smooth scroll
-lua require('neoscroll').setup()
 
-source $HOME/.config/nvim/coc.vim

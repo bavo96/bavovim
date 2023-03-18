@@ -2,20 +2,22 @@
 My custom vim's settings.
 
 # MacOS or Ubuntu
+- Install wezterm
 - Install neovim
 - Install tmux
-- Set color for terminal
-- Install vim-plug
-- Install pynvim (for python3)
 - Install NerdFonts (for this case install DejaVu): https://www.nerdfonts.com/font-downloads
 - (only for MacOS) Install oh my zsh https://ohmyz.sh/#install 
 - (only for MacOS) Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
 
 # Tmux
+- Install tmux plugins: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 - Update modification: `tmux source ~/.tmux.conf`
 
+
 # Nvim
+- Install vim-plug
 - Install plugins in vim-plug: `:PlugInstall`
+- Install pynvim (for python3 healthcheck)
 
 # Coc Nvim
 - Install nodejs >= 12.12

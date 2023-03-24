@@ -9,6 +9,9 @@ My custom vim's settings.
 - (only for MacOS) Install oh my zsh https://ohmyz.sh/#install 
 - (only for MacOS) Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
 
+# Wezterm
+- https://github.com/wez/wezterm/issues/253
+
 # Tmux
 - Install tmux plugins: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 - Update modification: `tmux source ~/.tmux.conf`
@@ -42,3 +45,13 @@ My custom vim's settings.
 - Preview file in Ubuntu: `sudo apt-get install gnome-sushi`
 - Mapping in vim: https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
 
+# Neovim tutorial
+- https://alpha2phi.medium.com/neovim-for-beginners-fuzzy-file-search-part-1-9df21c0e2c84
+
+# TODO
+- Learn fzf
+- Using git in neovim efficiently
+- LSP Server for python
+- Bug reading README.md file
+- Copy/Paste in Tmux 
+- Verify zshrc/bashrc file with oh-my-zsh/bash

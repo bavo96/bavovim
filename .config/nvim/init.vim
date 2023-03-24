@@ -16,8 +16,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'dstein64/vim-startuptime'
 
 " searching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 
 " NerdTree icon
 Plug 'ryanoasis/vim-devicons'
@@ -45,6 +45,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+" Git
+Plug 'tpope/vim-fugitive'
+" Plug 'APZelos/blamer.nvim'
 
 call plug#end()
 
@@ -79,8 +82,8 @@ let mapleader = ' '
 
 " NERDCommenter
 filetype plugin on
-" nmap <leader>cc <plug>NERDComToggleComment
-" vmap <leader>cc <plug>NERDComToggleComment gv
+nmap <leader>cc <plug>NERDComToggleComment
+vmap <leader>cc <plug>NERDComToggleComment gv
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -109,9 +112,14 @@ map <C-l> <C-w>l
 " Auto pairs
 " let g:AutoPairsShortcutFastwrap = "<C-A>"
 
-" vim airline
+" Vim airline
 let g:airline#extensions#branch#enabled=1
 let g:airline_powerline_fonts = 1
+
+" Blamer 
+" let g:blamer_enabled = 1
+" let g:blamer_delay = 0
+
 
 " Import lua configuration
 lua require('init')

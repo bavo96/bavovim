@@ -22,6 +22,10 @@ Plug 'junegunn/fzf.vim'
 " NerdTree icon
 Plug 'ryanoasis/vim-devicons'
 
+" NerdTree color
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'johnstef99/vim-nerdtree-syntax-highlight'
+
 " Tabline (at the top)
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'

@@ -46,8 +46,9 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
 " Git
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 " Plug 'APZelos/blamer.nvim'
+Plug 'f-person/git-blame.nvim'
 
 call plug#end()
 
@@ -73,6 +74,9 @@ set autoindent
 set formatoptions-=ro
 
 set fileformat=unix
+
+" Set conceal level in vim to fix square bracket in vim-devicons
+set conceallevel=2
 
 " Set space as mapleader
 let mapleader = ' '
@@ -116,12 +120,16 @@ map <C-l> <C-w>l
 let g:airline#extensions#branch#enabled=1
 let g:airline_powerline_fonts = 1
 
-" Blamer 
-" let g:blamer_enabled = 1
-" let g:blamer_delay = 0
-
+" Vim devicons
+let g:webdevicons_conceal_nerdtree_brackets=1
+let g:devicons_enable_signs = 0
+"" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
 
 " Import lua configuration
 lua require('init')
+
 
 

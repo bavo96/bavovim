@@ -9,6 +9,12 @@ Plug 'tpope/vim-surround'
 " Nerd Tree
 Plug 'preservim/nerdtree'
 
+" NerdTree icon
+Plug 'ryanoasis/vim-devicons'
+
+" NerdTree color
+Plug 'johnstef99/vim-nerdtree-syntax-highlight'
+
 " Commenter
 Plug 'preservim/nerdcommenter'
 
@@ -18,13 +24,6 @@ Plug 'dstein64/vim-startuptime'
 " searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" NerdTree icon
-Plug 'ryanoasis/vim-devicons'
-
-" NerdTree color
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'johnstef99/vim-nerdtree-syntax-highlight'
 
 " Tabline (at the top)
 Plug 'nvim-tree/nvim-web-devicons'
@@ -50,8 +49,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
 " Git
-" Plug 'tpope/vim-fugitive'
-" Plug 'APZelos/blamer.nvim'
 Plug 'f-person/git-blame.nvim'
 
 call plug#end()
@@ -59,6 +56,8 @@ call plug#end()
 " ##### VIM SECTION #####
 
 syntax enable
+syntax on
+filetype plugin on
 
 set mouse=a
 set encoding=utf-8
@@ -89,9 +88,8 @@ let mapleader = ' '
 " ##### VIM SECTION ##### 
 
 " NERDCommenter
-filetype plugin on
-nmap <leader>cc <plug>NERDComToggleComment
-vmap <leader>cc <plug>NERDComToggleComment gv
+" vmap <C-/> <plug>NERDCommenterToggle
+" nmap <C-/> <plug>NERDCommenterToggle
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -116,6 +114,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nmap <C-p> :NERDTreeToggle<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
+map <C-j> <C-w>j
+map <C-k> <C-w>k
 
 " Auto pairs
 " let g:AutoPairsShortcutFastwrap = "<C-A>"
@@ -131,6 +131,9 @@ let g:devicons_enable_signs = 0
 if exists('g:loaded_webdevicons')
     call webdevicons#refresh()
 endif
+
+" Vim nerdtree syntax highlight
+
 
 " Import lua configuration
 lua require('init')

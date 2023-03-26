@@ -35,7 +35,7 @@ return {
   },
   enable_scroll_bar = true,
   check_for_updates = true,
-  check_for_updates_interval_seconds = 3600 * 24 * 7,
   show_update_window = false,
+  check_for_updates_interval_seconds = 3600 * 24 * 7
 
 }

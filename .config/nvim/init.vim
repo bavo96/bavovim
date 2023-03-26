@@ -13,7 +13,7 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
 " NerdTree color
-Plug 'johnstef99/vim-nerdtree-syntax-highlight'
+Plug 'lambdalisue/glyph-palette.vim'
 
 " Commenter
 Plug 'preservim/nerdcommenter'
@@ -132,8 +132,12 @@ if exists('g:loaded_webdevicons')
     call webdevicons#refresh()
 endif
 
-" Vim nerdtree syntax highlight
-
+" Glyph palette
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
 
 " Import lua configuration
 lua require('init')

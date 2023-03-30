@@ -1,15 +1,9 @@
+local status_ok, lspconfig = pcall(require, 'lspconfig')
 
--- SETTING FOR NVIM COLOR (GRUVBOX)
-require("gruvbox").setup({
-  transparent_mode = true,
-})
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd("colorscheme gruvbox")
-
--- SETTING FOR LSPCONFIG
---
--- Setup language servers.
-local lspconfig = require('lspconfig')
+if not status_ok then
+	print('lspconfig is not working. Skipping...')
+	return
+end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

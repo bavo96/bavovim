@@ -4,6 +4,13 @@ function get_plugin_conf(name)
   end
 end
 
+function get_lsp_conf(name)
+  return function()
+    require('lsp.'.. name)
+  end
+end
+
+
 return require('packer').startup({function(use)
   -- packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -60,7 +67,10 @@ return require('packer').startup({function(use)
   }
     
   -- lspconfig 
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use {
+    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+    config = get_lsp_conf('lspconfig')()
+  }
   -- autocomplete
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp

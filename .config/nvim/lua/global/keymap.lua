@@ -1,4 +1,7 @@
+-- Option for keymap
 local opt = { noremap = true, silent = true }
+-- Load dependencies for keymap
+local builtin = require('telescope.builtin')
 
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>f', ':noh<CR>', opt)
@@ -7,15 +10,11 @@ vim.keymap.set('n', '<leader>f', ':noh<CR>', opt)
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)
 vim.keymap.set('n', '<leader>aq', '<Cmd>BufferCloseAllButCurrent<CR>', opt)
-vim.keymap.set('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', opts)
-vim.keymap.set('n', '<leader>2', '<Cmd>BufferGoto 2<CR>', opts)
-vim.keymap.set('n', '<leader>3', '<Cmd>BufferGoto 3<CR>', opts)
-vim.keymap.set('n', '<leader>4', '<Cmd>BufferGoto 4<CR>', opts)
-vim.keymap.set('n', '<leader>5', '<Cmd>BufferGoto 5<CR>', opts)
-vim.keymap.set('n', '<leader>6', '<Cmd>BufferGoto 6<CR>', opts)
-vim.keymap.set('n', '<leader>7', '<Cmd>BufferGoto 7<CR>', opts)
-vim.keymap.set('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', opts)
-vim.keymap.set('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', opts)
+-- + Go to buffer by index
+for i = 1, 10 do
+  local key = '<leader>' .. i
+  vim.keymap.set('n', key, '<Cmd>BufferGoto'.. i .. '<CR>', opts)
+end
 
 -- Comment.nvim
 -- + Map Ctrl+n to toggle comment in normal and visual mode
@@ -33,3 +32,9 @@ vim.keymap.set('n', '<C-k>', ':NvimTreeFocus<CR><C-w>k', opt)
 
 -- Packer
 vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>', opt)
+
+-- Telescope
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

@@ -26,6 +26,9 @@ vim.opt.termguicolors = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+-- Timeout for key sequences
+vim.opt.timeoutlen = 200
+
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true

@@ -10,7 +10,6 @@ function get_lsp_conf(name)
   end
 end
 
-
 return require('packer').startup({function(use)
   -- packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -44,7 +43,7 @@ return require('packer').startup({function(use)
 
   -- tabline (at the top)
   use {
-	  'romgrk/barbar.nvim',
+	  'romgrk/barbar.nvim', branch = 'feat/391',
     requires = 'nvim-web-devicons',
 	  config = get_plugin_conf('barbar')()
   }
@@ -66,7 +65,7 @@ return require('packer').startup({function(use)
     config = get_plugin_conf('nvim-treesitter')()
   }
     
-  -- lspconfig 
+  -- lspconfig
   use {
     'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
     config = get_lsp_conf('lspconfig')()
@@ -76,6 +75,13 @@ return require('packer').startup({function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+  -- find files in neovim
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
 
   -- git
   -- TODO: pass

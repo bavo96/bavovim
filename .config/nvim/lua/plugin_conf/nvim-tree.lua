@@ -28,13 +28,37 @@ local options = {
 nvimtree.setup(options)
 
 -- auto open nvim-tree when open neovim
-local function open_nvim_tree()
-  -- open the tree
-  require("nvim-tree.api").tree.open()
-end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+local function open_nvim_tree(data)
 
-vim.api.nvim_create_autocmd({"QuitPre"}, {
-    callback = function() vim.cmd("NvimTreeClose") end,
+  -- buffer is a real file on the disk
+  local real_file = vim.fn.filereadable(data.file) == 1
+
+  -- buffer is a [No Name]
+  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+  -- only files please
+  if not real_file and not no_name then
+    return
+  end
+
+  -- open the tree but don't focus it
+  require("nvim-tree.api").tree.toggle({ focus = false })
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { 
+  callback = open_nvim_tree
 })
+
+-- auto close nvim-tree
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("NvimTreeClose", {clear = true}),
+  pattern = "NvimTree_*",
+  callback = function()
+    local layout = vim.api.nvim_call_function("winlayout", {})
+    if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then vim.cmd("confirm quit") end
+  end
+})
+-- vim.api.nvim_create_autocmd({"QuitPre"}, {
+--   callback = function() vim.cmd("NvimTreeClose") end,
+-- })
 

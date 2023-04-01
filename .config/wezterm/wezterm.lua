@@ -6,10 +6,10 @@ return {
     'DejaVu Sans'
   },
   color_scheme = 'GruvboxDarkHard',
-  window_background_image = wezterm.home_dir .. '/.config/wezterm/batman.jpeg',
+  window_background_image = wezterm.home_dir .. '/.config/wezterm/batman.jpg',
   window_background_image_hsb = {
     -- Darken the background image by reducing it to 1/3rd
-    brightness = 0.06,
+    brightness = 0.2,
 
     -- You can adjust the hue by scaling its value.
     -- a multiplier of 1.0 leaves the value unchanged.

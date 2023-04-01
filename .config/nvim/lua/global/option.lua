@@ -1,7 +1,7 @@
 local indent = 2
 
 -- Set key leader
-vim.g.mapleader = "<Space>"
+vim.g.mapleader = " "
 
 -- Set tab and indent
 vim.opt.expandtab = true
@@ -26,11 +26,11 @@ vim.opt.termguicolors = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true
 vim.opt.backspace = {'indent', 'eol', 'start'}
 vim.opt.swapfile = false
+vim.opt.mouse:append { a }
 
 

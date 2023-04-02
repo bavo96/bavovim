@@ -29,6 +29,9 @@ vim.opt.incsearch = true
 -- Timeout for key sequences
 vim.opt.timeoutlen = 200
 
+-- Set static signcolumn (for errors, warnings, ...)
+vim.opt.signcolumn = 'yes'
+
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true
@@ -37,5 +40,4 @@ vim.opt.swapfile = false
 vim.opt.mouse:append { a }
 
 -- vim.opt.deno = '$HOME/.deno/bin/deno'
-
 

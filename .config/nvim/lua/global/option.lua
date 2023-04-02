@@ -11,7 +11,7 @@ vim.opt.shiftwidth= indent
 vim.opt.autoindent = true
 
 -- Turn off auto add a comment when newline
-vim.opt.formatoptions:remove { ro }
+vim.opt.formatoptions:remove { 'ro' }
 
 -- Set file format to unix to make sure endline is '\n'
 vim.opt.fileformat = 'unix'
@@ -33,7 +33,7 @@ vim.opt.timeoutlen = 200
 vim.opt.signcolumn = 'yes'
 
 -- Set this to copy to clipboard
-vim.opt.clipboard:append { unnamedplus }
+vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 
 -- Intelligibility configuration
 vim.opt.scrolloff = 7

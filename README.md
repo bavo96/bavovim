@@ -27,6 +27,7 @@ My custom vim's settings.
 - Mapping in vim: https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
 - https://alpha2phi.medium.com/neovim-for-beginners-fuzzy-file-search-part-1-9df21c0e2c84
 - Link: https://github.com/rockerBOO/awesome-neovim
+- We may need `xclip` (on Linux) or `pbcopy` (on Mac) to copy text to clipboard in vim.
 
 ## TODO
 - Learn fzf

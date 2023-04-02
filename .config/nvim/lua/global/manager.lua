@@ -33,7 +33,10 @@ return require('packer').startup({function(use)
   use 'tpope/vim-surround'
 
   -- auto create pairs for special characters
-  use 'jiangmiao/auto-pairs'
+  use {
+    'windwp/nvim-autopairs',
+    config = get_plugin_conf('nvim-autopairs')()
+  }
 
   -- comment in nvim
   use {
@@ -81,6 +84,13 @@ return require('packer').startup({function(use)
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- toggle terminal in neovim
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = get_plugin_conf('toggleterm')()
   }
 
   -- git

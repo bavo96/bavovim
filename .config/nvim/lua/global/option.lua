@@ -32,6 +32,9 @@ vim.opt.timeoutlen = 200
 -- Set static signcolumn (for errors, warnings, ...)
 vim.opt.signcolumn = 'yes'
 
+-- Set this to copy to clipboard
+vim.opt.clipboard:append { unnamedplus }
+
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true

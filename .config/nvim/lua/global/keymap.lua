@@ -25,10 +25,10 @@ vim.keymap.set('v', '<C-n>', '<Plug>(comment_toggle_linewise_visual)', opt)
 -- + Toggle nvim-tree
 vim.keymap.set('n', '<C-p>', ':NvimTreeToggle<CR>', opt) 
 -- + navigation in Nvim-Tree
-vim.keymap.set('n', '<C-h>', ':NvimTreeFocus<CR><C-w>h', opt) 
-vim.keymap.set('n', '<C-l>', ':NvimTreeFocus<CR><C-w>l', opt) 
-vim.keymap.set('n', '<C-j>', ':NvimTreeFocus<CR><C-w>j', opt) 
-vim.keymap.set('n', '<C-k>', ':NvimTreeFocus<CR><C-w>k', opt) 
+vim.keymap.set('n', '<C-h>', '<C-w>h', opt) 
+vim.keymap.set('n', '<C-l>', '<C-w>l', opt) 
+vim.keymap.set('n', '<C-j>', '<C-w>j', opt) 
+vim.keymap.set('n', '<C-k>', '<C-w>k', opt) 
 
 -- Packer
 vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>', opt)
@@ -38,3 +38,4 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+

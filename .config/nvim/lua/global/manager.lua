@@ -43,7 +43,8 @@ return require('packer').startup({function(use)
 
   -- tabline (at the top)
   use {
-	  'romgrk/barbar.nvim', branch = 'feat/391',
+	  'romgrk/barbar.nvim', 
+    -- branch = 'feat/391',
     requires = 'nvim-web-devicons',
 	  config = get_plugin_conf('barbar')()
   }
@@ -81,7 +82,6 @@ return require('packer').startup({function(use)
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-
 
   -- git
   -- TODO: pass

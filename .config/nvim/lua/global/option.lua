@@ -27,7 +27,7 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Timeout for key sequences
-vim.opt.timeoutlen = 200
+vim.opt.timeoutlen = 300
 
 -- Set static signcolumn (for errors, warnings, ...)
 vim.opt.signcolumn = 'yes'

@@ -15,7 +15,5 @@ bufferline.setup {
     -- Configure the base icons on the bufferline.
     buffer_index = true, -- Index according to visual index on the screen not the background number of buffer
   },
-
-  sidebar_filetypes = {'NvimTree', 'undotree'},
 }
 

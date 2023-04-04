@@ -20,6 +20,7 @@ My custom vim's settings.
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
+- Install xcode: `xcode-select --install`
 ### For Linux only
 - Install oh-my-bash: https://github.com/ohmybash/oh-my-bash#basic-installation
 

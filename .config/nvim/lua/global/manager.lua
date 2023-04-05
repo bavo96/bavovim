@@ -65,10 +65,13 @@ return require('packer').startup({function(use)
   -- code color (tree parsing)
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
     config = get_plugin_conf('nvim-treesitter')()
   }
-    
+
   -- lspconfig
   use {
     'neovim/nvim-lspconfig', -- Configurations for Nvim LSP

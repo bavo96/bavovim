@@ -3,6 +3,23 @@ local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap
 local builtin = require('telescope.builtin')
 
+
+-- Custom function
+local function get_map()
+  normal_mappings = vim.api.nvim_get_keymap('n')
+  visual_mappings = vim.api.nvim_get_keymap('v')
+  insert_mappings = vim.api.nvim_get_keymap('i')
+  return normal_mappings
+end
+
+-- for key, value in pairs(get_map()) do 
+--   print(key, value)
+-- end
+
+-- -- Write the mappings to a file
+-- local file = expand("~/.vim/mappings.log")
+-- call writefile(split(mappings, "\n"), file)
+
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>f', ':noh<CR>', opt)
 

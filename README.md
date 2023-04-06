@@ -12,8 +12,9 @@ My custom vim's settings.
 - Link: https://github.com/tmux/tmux/wiki/Installing
 - Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
 - Source tmux: `tmux source ~/.tmux.conf`
-### NerdFonts (choose DejaVu): 
+### NerdFonts: 
 - Link: https://www.nerdfonts.com/font-downloads
+- Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`
 ### packer (neovim's plugins manager): 
 - Link: https://github.com/wbthomason/packer.nvim#quickstart
 ### Lazygit
@@ -21,7 +22,6 @@ My custom vim's settings.
 ### LSP
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 - Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'marksman'
-
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh

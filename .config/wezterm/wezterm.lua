@@ -2,20 +2,22 @@ local wezterm = require 'wezterm'
 local os = require 'os'
 local io = require 'io'
 
-os_name = io.popen("uname"):read('*l')
+local os_name = io.popen("uname"):read('*l')
 
 local function set_brightness()
   if os_name == 'Linux' then
-    return 0.3 -- for Linux
+    return 0.5 -- for Linux
   else
-    return 0.4 -- for Darwin
+    return 0.6 -- for Darwin
   end
 end
 
 return {
+
   font = wezterm.font_with_fallback {
+    'JetBrains Mono',
     'DejaVu Sans Mono',
-    'DejaVu Sans'
+    'DejaVu Sans',
   },
   color_scheme = 'GruvboxDarkHard',
   window_background_image = wezterm.home_dir .. '/.config/wezterm/batman.jpg',

@@ -1,3 +1,5 @@
+
+
 -- Option for keymap
 local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap

@@ -35,6 +35,9 @@ vim.opt.signcolumn = 'yes'
 -- Set this to copy to clipboard
 vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 
+-- Remove tilde in neovim
+vim.opt.fcs = 'eob: '
+
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true

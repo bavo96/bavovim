@@ -1,5 +1,6 @@
 # bavovim
 My custom vim's settings.
+![plot](./bavovim.png)
 
 ## 1. Installation 
 ### wezterm: 
@@ -77,7 +78,7 @@ My custom vim's settings.
 ### Others
 | Keys | Description |
 --- | --- |
-| Space + f | Turn off highlighting. |
+| Space + a | Turn off highlighting. |
 
 ## 4. TODO
 - Learn fzf.

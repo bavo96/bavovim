@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 vim.opt.expandtab = true
 vim.opt.tabstop = indent
 vim.opt.softtabstop = indent
-vim.opt.shiftwidth= indent
+vim.opt.shiftwidth = indent
 vim.opt.autoindent = true
 
 -- Turn off auto add a comment when newline
@@ -41,7 +41,7 @@ vim.opt.fcs = 'eob: '
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true
-vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.swapfile = false
 vim.opt.mouse:append { a }
 

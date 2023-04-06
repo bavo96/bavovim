@@ -57,7 +57,6 @@ end
 
 
 for _, lsp in ipairs(servers) do
-    print(get_settings(lsp))
     lspconfig[lsp].setup {
         -- on_attach = my_custom_on_attach,
         capabilities = capabilities,

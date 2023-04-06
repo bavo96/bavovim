@@ -82,7 +82,6 @@ My custom vim's settings.
 
 ## 4. TODO
 - Learn fzf.
-- Write a document about common keymaps in neovim.
 - Using git in neovim efficiently (lazygit, gitsigns).
 - Copy/Paste in Tmux.
 - Create a default windows when open tmux or open a new window.

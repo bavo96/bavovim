@@ -3,7 +3,6 @@ local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap
 local builtin = require('telescope.builtin')
 
-
 -- Custom function
 local function get_map()
   normal_mappings = vim.api.nvim_get_keymap('n')
@@ -68,3 +67,14 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- lazygit
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+-- Mason
+vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", {noremap = true, silent = true})
+
+
+
+
+
+
+
+

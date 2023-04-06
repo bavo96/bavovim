@@ -1,10 +1,10 @@
-function get_plugin_conf(name)
+local function get_plugin_conf(name)
   return function()
     require('plugin_conf.'.. name)
   end
 end
 
-function get_lsp_conf(name)
+local function get_lsp_conf(name)
   return function()
     require('lsp.'.. name)
   end
@@ -16,14 +16,21 @@ return require('packer').startup({function(use)
 
   -- nvim colorscheme
   use {
-	  'ellisonleao/gruvbox.nvim',
-	  config = get_plugin_conf('gruvbox')()
+    'ellisonleao/gruvbox.nvim',
+    config = get_plugin_conf('gruvbox')()
+  }
+
+  -- tabline (at the top)
+  use {
+    'romgrk/barbar.nvim',
+    requires = 'nvim-web-devicons',
+    config = get_plugin_conf('barbar')()
   }
 
   -- nvim tree
   use {
-	  'nvim-tree/nvim-tree.lua',
-	  config = get_plugin_conf('nvim-tree')()
+    'nvim-tree/nvim-tree.lua',
+    config = get_plugin_conf('nvim-tree')()
   }
 
   -- nvim icons
@@ -41,21 +48,13 @@ return require('packer').startup({function(use)
   -- comment in nvim
   use {
     'numToStr/Comment.nvim',
-	  config = get_plugin_conf('comment')()
-  }
-
-  -- tabline (at the top)
-  use {
-	  'romgrk/barbar.nvim', 
-    -- branch = 'feat/391',
-    requires = 'nvim-web-devicons',
-	  config = get_plugin_conf('barbar')()
+    config = get_plugin_conf('comment')()
   }
 
   -- vim airline (at the bottom)
   use {
-	  'vim-airline/vim-airline',
-	  config = get_plugin_conf('vim-airline')()
+    'vim-airline/vim-airline',
+    config = get_plugin_conf('vim-airline')()
   }
   use 'vim-airline/vim-airline-themes'
 
@@ -66,8 +65,8 @@ return require('packer').startup({function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
-        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-        ts_update()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
     end,
     config = get_plugin_conf('nvim-treesitter')()
   }
@@ -80,8 +79,14 @@ return require('packer').startup({function(use)
   -- autocomplete
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  -- LSP servers, DAP servers, linters, and formatters.
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    config = get_plugin_conf('mason')(),
+  }
 
   -- find files in neovim
   use {

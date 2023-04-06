@@ -5,6 +5,8 @@ if not status_ok then
 	return
 end
 
+vim.g.barbar_auto_setup = false -- disable auto-setup
+
 -- Set barbar's options
 bufferline.setup {
   -- Enable/disable animations

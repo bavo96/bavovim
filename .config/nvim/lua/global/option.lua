@@ -1,4 +1,4 @@
-local indent = 2
+local indent = 4
 
 -- Set key leader
 vim.g.mapleader = " "
@@ -43,4 +43,3 @@ vim.opt.swapfile = false
 vim.opt.mouse:append { a }
 
 -- vim.opt.deno = '$HOME/.deno/bin/deno'
-

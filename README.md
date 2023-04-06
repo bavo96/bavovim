@@ -87,4 +87,5 @@ My custom vim's settings.
 - Create a default windows when open tmux or open a new window.
 - Include zshrc/bashrc file with oh-my-zsh/bash.
 - Using lspconfig efficiently.
+- wezterm's scrollbar is not working properly.
 

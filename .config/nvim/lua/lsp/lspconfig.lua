@@ -55,7 +55,6 @@ local function get_settings(lsp)
     return {}
 end
 
-
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         -- on_attach = my_custom_on_attach,
@@ -94,7 +93,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -144,13 +143,16 @@ cmp.setup {
             end
         end, { 'i', 's' }),
     }),
-    sources = cmp.config.sources({
+    sources = cmp.config.sources(
+    {
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
         { name = 'vsnip' },     -- For vsnip users.
         { name = 'luasnip' },   -- For luasnip users.
         { name = 'ultisnips' }, -- For ultisnips users.
         { name = 'snippy' },    -- For snippy users.
-    }, {
+    },
+    {
         { name = 'buffer' },
     })
 }

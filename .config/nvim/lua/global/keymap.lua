@@ -29,7 +29,7 @@ vim.keymap.set('n', '<leader>aq', '<Cmd>BufferCloseAllButCurrent<CR>', opt)
 -- + Go to buffer by index
 for i = 1, 10 do
     local key = '<leader>' .. i
-    vim.keymap.set('n', key, '<Cmd>BufferGoto' .. i .. '<CR>', opts)
+    vim.keymap.set('n', key, '<Cmd>BufferGoto' .. i .. '<CR>', opt)
 end
 
 -- Comment.nvim
@@ -67,7 +67,7 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- lazygit
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- Mason
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })

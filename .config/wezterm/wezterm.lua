@@ -7,7 +7,7 @@ local function set_brightness()
     if os_name == 'Linux' then
         return 0.5 -- for Linux
     else
-        return 1 -- for Darwin
+        return 0.6 -- for Darwin
     end
 end
 
@@ -27,6 +27,7 @@ return {
         hue = 1.0,
         -- You can adjust the saturation also.
         saturation = 1.0,
+        attachment = { Parallax = 0.1 },
     },
     window_background_opacity = 1,
     text_background_opacity = 1,

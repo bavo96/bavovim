@@ -58,15 +58,28 @@ My custom vim's settings.
 ### lazygit 
 | Keys | Description |
 --- | --- |
-| Space + g | Toggle lazygit. |
+| Space + gg | Toggle lazygit. |
 ### mason
 | Keys | Description |
 --- | --- |
 | Space + ms | Toggle mason. |
+### lsp
+| Keys | Description |
+--- | --- |
+| Space + f | Format current buffer. |
+| Space + rn | Rename a variable in a file. |
+| K | Hover on funciton to show description. |
+| gD | Go to declaration. |
+| gd | Go to definition. |
+| gr | Show references of a variable. |
+
+
 ### Others
 | Keys | Description |
 --- | --- |
 | Space + a | Turn off highlighting. |
+| Control + o | Go to [count] older cursor position in jump list. |
+| Control + i | Go to [count] newer cursor position in jump list. |
 
 ## 3. TODO
 - Learn fzf.

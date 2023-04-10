@@ -5,5 +5,5 @@ if not status_ok then
     return
 end
 
-require('telescope').setup {
+telescope.setup {
 }

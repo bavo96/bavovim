@@ -17,10 +17,9 @@ barbar.setup {
         -- Configure the base icons on the bufferline.
         buffer_index = true, -- Index according to visual index on the screen not the background number of buffer
     },
-    -- -- Set the filetypes which barbar will offset itself for
-    -- sidebar_filetypes = {
-    --     -- Use the default values: {event = 'BufWinLeave', text = nil}
-    --     NvimTree = true,
-    -- },
+    -- Set the filetypes which barbar will offset itself for
+    sidebar_filetypes = {
+        -- Use the default values: {event = 'BufWinLeave', text = nil}
+        NvimTree = true,
+    },
 }
-

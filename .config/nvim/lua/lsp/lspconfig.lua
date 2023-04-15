@@ -35,7 +35,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright', 'lua_ls', 'marksman' }
+local servers = { 'pyright', 'lua_ls', 'marksman', 'dartls' }
 
 local function get_settings(lsp)
     if lsp == 'lua_ls' then
@@ -49,6 +49,23 @@ local function get_settings(lsp)
                     -- Get the language server to recognize the `vim` global
                     globals = { 'vim' },
                 },
+            }
+        }
+    elseif lsp == 'dartls' then
+        return {
+            dart = {
+                completeFunctionCalls = true,
+                showTodos = true
+            }
+        }
+    elseif lsp == 'pyright' then
+        return {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true
+                }
             }
         }
     end
@@ -144,15 +161,15 @@ cmp.setup {
         end, { 'i', 's' }),
     }),
     sources = cmp.config.sources(
-    {
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'vsnip' },     -- For vsnip users.
-        { name = 'luasnip' },   -- For luasnip users.
-        { name = 'ultisnips' }, -- For ultisnips users.
-        { name = 'snippy' },    -- For snippy users.
-    },
-    {
-        { name = 'buffer' },
-    })
+        {
+            { name = 'nvim_lsp' },
+            { name = 'nvim_lua' },
+            { name = 'vsnip' },     -- For vsnip users.
+            { name = 'luasnip' },   -- For luasnip users.
+            { name = 'ultisnips' }, -- For ultisnips users.
+            { name = 'snippy' },    -- For snippy users.
+        },
+        {
+            { name = 'buffer' },
+        })
 }

@@ -106,6 +106,12 @@ return require('packer').startup({
             config = get_plugin_conf('toggleterm')()
         }
 
+        use {
+            "petertriho/nvim-scrollbar",
+            config = get_plugin_conf('nvim-scrollbar')()
+        }
+
+
         -- git
         -- TODO: pass
     end,

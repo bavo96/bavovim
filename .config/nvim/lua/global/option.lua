@@ -44,5 +44,6 @@ vim.opt.number = true
 vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.swapfile = false
 vim.opt.mouse:append { a }
+vim.opt.cursorline = true
 
 -- vim.opt.deno = '$HOME/.deno/bin/deno'

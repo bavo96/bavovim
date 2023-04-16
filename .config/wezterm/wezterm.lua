@@ -27,7 +27,6 @@ return {
         hue = 1.0,
         -- You can adjust the saturation also.
         saturation = 1.0,
-        attachment = { Parallax = 0.1 },
     },
     window_background_opacity = 1,
     text_background_opacity = 1,

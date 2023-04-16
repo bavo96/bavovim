@@ -111,6 +111,12 @@ return require('packer').startup({
             config = get_plugin_conf('nvim-scrollbar')()
         }
 
+        use {
+            "RRethy/vim-illuminate",
+            config = get_plugin_conf('vim-illuminate')()
+
+        }
+
 
         -- git
         -- TODO: pass

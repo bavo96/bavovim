@@ -22,7 +22,7 @@ My custom vim's settings.
 - Link: https://github.com/jesseduffield/lazygit
 ### LSP
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'marksman'
+- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pylsp', 'lua_ls', 'dartls', 'bashls'
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh

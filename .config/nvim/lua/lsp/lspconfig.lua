@@ -35,7 +35,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright', 'lua_ls', 'marksman', 'dartls' }
+local servers = { 'pylsp', 'lua_ls', 'dartls', 'bashls' }
 
 local function get_settings(lsp)
     if lsp == 'lua_ls' then
@@ -58,13 +58,14 @@ local function get_settings(lsp)
                 showTodos = true
             }
         }
-    elseif lsp == 'pyright' then
+    elseif lsp == 'pylsp' then
         return {
-            python = {
-                analysis = {
-                    autoSearchPaths = true,
-                    diagnosticMode = "workspace",
-                    useLibraryCodeForTypes = true
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = { 'W391' },
+                        maxLineLength = 100
+                    }
                 }
             }
         }

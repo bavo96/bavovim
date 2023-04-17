@@ -6,7 +6,10 @@ if not status_ok then
 end
 
 gruvbox.setup({
-    transparent_mode = true
+    transparent_mode = true,
+    overrides = {
+        CursorLine = { bg = '#282828' } -- Change color depends on gruvbox pallete
+    },
 })
 
 vim.opt.background = 'dark'

@@ -114,7 +114,6 @@ return require('packer').startup({
         use {
             "RRethy/vim-illuminate",
             config = get_plugin_conf('vim-illuminate')()
-
         }
 
 

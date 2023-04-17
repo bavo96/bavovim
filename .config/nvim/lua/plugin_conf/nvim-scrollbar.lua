@@ -6,4 +6,5 @@ if not status_ok then
 end
 
 scrollbar.setup {
+    filetypes_denylist = { 'NvimTree' }
 }

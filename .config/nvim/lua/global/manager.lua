@@ -52,12 +52,12 @@ return require('packer').startup({
             config = get_plugin_conf('comment')()
         }
 
-        -- vim airline (at the bottom)
+        -- lualine (at the bottom)
         use {
-            'vim-airline/vim-airline',
-            config = get_plugin_conf('vim-airline')()
+            'nvim-lualine/lualine.nvim',
+            config = get_plugin_conf('lualine')()
         }
-        use 'vim-airline/vim-airline-themes'
+
 
         -- show indentation
         use 'lukas-reineke/indent-blankline.nvim'
@@ -115,7 +115,6 @@ return require('packer').startup({
             "RRethy/vim-illuminate",
             config = get_plugin_conf('vim-illuminate')()
         }
-
 
         -- git
         -- TODO: pass

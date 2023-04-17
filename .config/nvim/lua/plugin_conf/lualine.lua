@@ -9,7 +9,8 @@ lualine.setup {
     options = {
         disabled_filetypes = {
             statusline = { 'NvimTree' }
-        }
+        },
+        theme = 'gruvbox'
     }
 
 }

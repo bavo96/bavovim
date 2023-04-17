@@ -63,6 +63,11 @@ My custom vim's settings.
 | Keys | Description |
 --- | --- |
 | Space + ms | Toggle mason. |
+### vim-illuminate
+| Keys | Description |
+--- | --- |
+| Alt + p | Move to the previous reference. |
+| Alt + n | Move to the next reference. |
 ### lsp
 | Keys | Description |
 --- | --- |
@@ -72,7 +77,6 @@ My custom vim's settings.
 | gD | Go to declaration. |
 | gd | Go to definition. |
 | gr | Show references of a variable. |
-
 
 ### Others
 | Keys | Description |

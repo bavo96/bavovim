@@ -35,7 +35,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pylsp', 'lua_ls', 'dartls', 'bashls' }
+local servers = { 'pyright', 'lua_ls', 'bashls', 'dartls' }
 
 local function get_settings(lsp)
     if lsp == 'lua_ls' then
@@ -62,10 +62,32 @@ local function get_settings(lsp)
         return {
             pylsp = {
                 plugins = {
+                    -- Turn these off to use flake8
                     pycodestyle = {
-                        ignore = { 'W391' },
-                        maxLineLength = 100
+                        enabled = false,
+                    },
+                    mccabe = { enabled = false },
+                    -- Linter
+                    pyflakes = { enabled = false },
+                    pylint = { enabled = false },
+                    flake8 = { enabled = true },
+                    -- Formatter
+                    autopep8 = { enabled = true },
+                    yapf = {
+                        enabled = true,
+                        args = { '--style=pep8' }
                     }
+                },
+                configurationSources = { 'flake8' },
+            }
+        }
+    elseif lsp == 'pyright' then
+        return {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true
                 }
             }
         }

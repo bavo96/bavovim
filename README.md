@@ -87,6 +87,7 @@ My custom vim's settings.
 
 ## 3. TODO
 - Restructure lsp folder.
+- UI customization for lsp: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization.
 - Using lspconfig efficiently.
 - Learn fzf.
 - Using git in neovim efficiently (lazygit, gitsigns).

@@ -86,13 +86,13 @@ My custom vim's settings.
 | Control + i | Go to [count] newer cursor position in jump list. |
 
 ## 3. TODO
+- Restructure lsp folder.
+- Using lspconfig efficiently.
 - Learn fzf.
 - Using git in neovim efficiently (lazygit, gitsigns).
 - Copy/Paste in Tmux.
 - Create a default windows when open tmux or open a new window.
 - Include zshrc/bashrc file with oh-my-zsh/bash.
-- Using lspconfig efficiently.
-- wezterm's scrollbar is not working properly.
 
 ## 4. Vim's knowledge 
 - Mapping in vim: https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping

@@ -40,7 +40,7 @@ vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 vim.opt.fcs = 'eob: '
 
 -- Set update time in vim
-vim.opt.updatetime = 400
+vim.opt.updatetime = 1000
 
 -- Intelligibility configuration
 vim.opt.scrolloff = 7

@@ -92,6 +92,12 @@ return require('packer').startup({
             config = get_lsp_conf('lspconfig')()
         }
 
+        -- advanced lspconfig
+        use {
+            'jose-elias-alvarez/null-ls.nvim',
+            config = get_lsp_conf('null-ls')()
+        }
+
         -- autocomplete, snippet
         use { -- Autocompletion plugin
             'hrsh7th/nvim-cmp',

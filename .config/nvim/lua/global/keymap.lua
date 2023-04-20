@@ -3,29 +3,13 @@ local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap
 local builtin = require('telescope.builtin')
 
--- Custom function
-local function get_map()
-    local normal_mappings = vim.api.nvim_get_keymap('n')
-    local visual_mappings = vim.api.nvim_get_keymap('v')
-    local insert_mappings = vim.api.nvim_get_keymap('i')
-    return normal_mappings
-end
-
--- for key, value in pairs(get_map()) do
---   print(key, value)
--- end
-
--- -- Write the mappings to a file
--- local file = expand("~/.vim/mappings.log")
--- call writefile(split(mappings, "\n"), file)
-
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 
 -- barbar.nvim
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)
-vim.keymap.set('n', '<leader>aq', '<Cmd>BufferCloseAllButCurrent<CR>', opt)
+vim.keymap.set('n', '<leader>qa', '<Cmd>BufferCloseAllButCurrent<CR>', opt)
 -- + Go to buffer by index
 for i = 1, 10 do
     local key = '<leader>' .. i
@@ -62,7 +46,6 @@ function _G.set_terminal_keymaps()
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
-
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
@@ -71,3 +54,4 @@ vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { n
 
 -- Mason
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })
+

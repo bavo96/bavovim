@@ -58,7 +58,6 @@ return require('packer').startup({
             config = get_plugin_conf('lualine')()
         }
 
-
         -- show indentation
         use 'lukas-reineke/indent-blankline.nvim'
 
@@ -74,7 +73,7 @@ return require('packer').startup({
 
         -- LSP servers, DAP servers, linters, and formatters.
         use {
-            "williamboman/mason.nvim",
+            'williamboman/mason.nvim',
             run = function()
                 local mason_update = require('mason.api.command')
                 mason_update.MasonUpdate() -- :MasonUpdate updates registry contents
@@ -83,7 +82,7 @@ return require('packer').startup({
         }
 
         use {
-            "williamboman/mason-lspconfig.nvim",
+            'williamboman/mason-lspconfig.nvim',
             config = get_lsp_conf('mason-lspconfig')(),
         }
 
@@ -94,16 +93,26 @@ return require('packer').startup({
         }
 
         -- autocomplete, snippet
-        use 'hrsh7th/nvim-cmp'         -- Autocompletion plugin
-        use 'hrsh7th/cmp-nvim-lsp'     -- LSP source for nvim-cmp
-        use 'hrsh7th/cmp-nvim-lua'     -- Vim source for nvim-cmp
+        use { -- Autocompletion plugin
+            'hrsh7th/nvim-cmp',
+            config = get_lsp_conf('cmp')()
+
+        }
+        use 'hrsh7th/cmp-nvim-lsp'     -- LSP capabilities for nvim-cmp
         use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
         use 'L3MON4D3/LuaSnip'         -- Snippets plugin
+
+        -- highlight words
+        -- use {
+        --     'rrethy/vim-illuminate',
+        --     config = get_plugin_conf('vim-illuminate')(),
+        -- }
 
         -- find files in neovim
         use {
             'nvim-telescope/telescope.nvim',
-            requires = { { 'nvim-lua/plenary.nvim' } }
+            requires = { { 'nvim-lua/plenary.nvim' } },
+            config = get_plugin_conf('telescope')()
         }
 
         -- toggle terminal in neovim

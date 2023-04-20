@@ -4,11 +4,11 @@ local indent = 4
 vim.g.mapleader = " "
 
 -- Set tab and indent
-vim.opt.expandtab = true
 vim.opt.tabstop = indent
 vim.opt.softtabstop = indent
 vim.opt.shiftwidth = indent
 vim.opt.autoindent = true
+vim.opt.expandtab = true
 
 -- Turn off auto add a comment when newline
 vim.opt.formatoptions:remove { 'ro' }
@@ -18,6 +18,7 @@ vim.opt.fileformat = 'unix'
 
 -- Show some invisible characters
 vim.opt.list = true
+vim.opt.listchars = { tab = '>~>' }
 
 -- Set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -38,6 +39,9 @@ vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 -- Remove tilde in neovim
 vim.opt.fcs = 'eob: '
 
+-- Set update time in vim
+vim.opt.updatetime = 400
+
 -- Intelligibility configuration
 vim.opt.scrolloff = 7
 vim.opt.number = true
@@ -45,5 +49,7 @@ vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.swapfile = false
 vim.opt.mouse:append { a }
 vim.opt.cursorline = true
+
+
 
 -- vim.opt.deno = '$HOME/.deno/bin/deno'

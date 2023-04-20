@@ -1,0 +1,124 @@
+-- Load cmp-nvim-lsp
+local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not status_ok then
+    print('cmp-nvim-lsp is not working. Skipping...')
+    return
+end
+
+
+local M = {}
+function M.settings(server)
+    if server == 'lua_ls' then
+        return {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = { 'vim' },
+                },
+            }
+        }
+    elseif server == 'dartls' then
+        return {
+            dart = {
+                completeFunctionCalls = true,
+                showTodos = true
+            }
+        }
+    elseif server == 'pylsp' then
+        return {
+            pylsp = {
+                plugins = {
+                    -- Turn these off to use flake8
+                    pycodestyle = {
+                        enabled = false,
+                    },
+                    mccabe = { enabled = false },
+                    -- Linter
+                    pyflakes = { enabled = false },
+                    pylint = { enabled = false },
+                    flake8 = { enabled = true },
+                    -- Formatter
+                    autopep8 = { enabled = true },
+                    -- yapf = {
+                    --     enabled = true,
+                    --     args = { '--style=pep8' }
+                    -- }
+                },
+                configurationSources = { 'flake8' },
+            }
+        }
+        elseif server == 'pyright' then
+            return {
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        diagnosticMode = "workspace",
+                        useLibraryCodeForTypes = true
+                    }
+                }
+            }
+    end
+    return {}
+end
+
+function M.on_attach(server, buff)
+    local config = {
+        -- disable virtual text
+        virtual_text = false,
+        update_in_insert = true,
+        underline = true,
+        severity_sort = true,
+        float = {
+            focusable = false,
+            style = "minimal",
+            border = "rounded",
+            source = "always",
+            header = "",
+            prefix = "",
+        },
+    }
+
+    vim.diagnostic.config(config)
+
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+        width = 60,
+    })
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+        width = 60,
+    })
+
+    local opts = { buffer = buff }
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<C-d>', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', '<C-u>', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', 'gll', vim.diagnostic.setloclist)
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<space>f', function()
+        vim.lsp.buf.format { async = true }
+    end, opts)
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    -- vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
+    -- require 'illuminate'.on_attach(server)
+end
+
+
+function M.capabilities()
+    -- Add additional capabilities supported by nvim-cmp
+    return cmp_nvim_lsp.default_capabilities()
+end
+
+return M

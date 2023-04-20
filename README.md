@@ -23,6 +23,8 @@ My custom vim's settings.
 ### LSP
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 - Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pylsp', 'lua_ls', 'dartls', 'bashls'
+### ripgrep (for telescope)
+- Link: https://github.com/BurntSushi/ripgrep
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
@@ -73,10 +75,15 @@ My custom vim's settings.
 --- | --- |
 | Space + f | Format current buffer. |
 | Space + rn | Rename a variable in a file. |
-| K | Hover on funciton to show description. |
+| K | Hover on function to show description. |
 | gD | Go to declaration. |
 | gd | Go to definition. |
 | gr | Show references of a variable. |
+| gl | Show line diagnostic. |
+| Control + d | Go to next diagnostic. |
+| Control + u | Go to previous diagnostic. |
+| gll | Show list of diagnostics. |
+
 
 ### Others
 | Keys | Description |

@@ -22,9 +22,11 @@ My custom vim's settings.
 - Link: https://github.com/jesseduffield/lazygit
 ### LSP
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pylsp', 'lua_ls', 'dartls', 'bashls'
+- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'dartls', 'bashls'
 ### ripgrep (for telescope)
 - Link: https://github.com/BurntSushi/ripgrep
+### color in neovim
+- Change color in [gruvbox](./config/)
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
@@ -83,7 +85,6 @@ My custom vim's settings.
 | Control + d | Go to next diagnostic. |
 | Control + u | Go to previous diagnostic. |
 | gll | Show list of diagnostics. |
-
 
 ### Others
 | Keys | Description |

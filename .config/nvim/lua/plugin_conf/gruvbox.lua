@@ -5,12 +5,34 @@ if not status_ok then
     return
 end
 
+-- setup must be called before loading the colorscheme
+-- Default options:
 gruvbox.setup({
-    transparent_mode = true,
-    overrides = {
-        CursorLine = { bg = '#282828' } -- Change color depends on gruvbox pallete
+    undercurl = true,
+    underline = true,
+    bold = true,
+    italic = {
+        strings = true,
+        comments = true,
+        operators = false,
+        folds = true,
     },
+    strikethrough = true,
+    invert_selection = false,
+    invert_signs = false,
+    invert_tabline = false,
+    invert_intend_guides = false,
+    inverse = true, -- invert background for search, diffs, statuslines and errors
+    contrast = "", -- can be "hard", "soft" or empty string
+    palette_overrides = {},
+    overrides = {
+        CursorLine = { bg = '#282828' }, -- Change cursor color
+        Search = { fg = '#a89984' }
+    },
+    dim_inactive = false,
+    transparent_mode = true,
 })
+vim.cmd("colorscheme gruvbox")
 
 vim.opt.background = 'dark'
 vim.cmd([[colorscheme gruvbox]])

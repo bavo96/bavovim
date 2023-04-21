@@ -110,11 +110,13 @@ function M.on_attach(server, buff)
     vim.keymap.set('n', '<space>f', function()
         vim.lsp.buf.format { async = true }
     end, opts)
+    -- Automatically show diagnostic 
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
     -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     -- vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
     -- require 'illuminate'.on_attach(server)
+    --
 end
-
 
 function M.capabilities()
     -- Add additional capabilities supported by nvim-cmp

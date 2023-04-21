@@ -6,6 +6,10 @@ local builtin = require('telescope.builtin')
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 
+-- Turn off command history in vim
+vim.keymap.set('n', 'q:', '<nop>', opt)
+vim.keymap.set('n', 'Q', '<nop>', opt)
+
 -- barbar.nvim
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)

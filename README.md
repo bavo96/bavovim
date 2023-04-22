@@ -101,9 +101,8 @@ chmod +x update_local.sh
 | Control + i | Go to [count] newer cursor position in jump list. |
 
 ## 3. TODO
-- Restructure lsp folder.
 - UI customization for lsp: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization.
-- Using lspconfig efficiently.
+- Disable command history
 - Learn fzf.
 - Using git in neovim efficiently (lazygit, gitsigns).
 - Copy/Paste in Tmux.

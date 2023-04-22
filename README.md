@@ -3,6 +3,13 @@ My custom vim's settings.
 ![plot](./bavovim.png)
 
 ## 1. Installation 
+### Add configuration
+```bash
+chmod +x update_local.sh
+./update_local.sh
+```
+### Neovim
+- link: https://github.com/neovim/neovim/wiki/Installing-Neovim
 ### wezterm: 
 - Link: https://wezfurlong.org/wezterm/installation.html
 - Move between words in command line (macOS): https://github.com/wez/wezterm/issues/253

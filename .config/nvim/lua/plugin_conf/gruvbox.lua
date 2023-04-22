@@ -27,7 +27,7 @@ gruvbox.setup({
     palette_overrides = {},
     overrides = {
         CursorLine = { bg = '#282828' }, -- Change cursor color
-        Search = { fg = '#a89984' }
+        Search = { fg = '#458588' }
     },
     dim_inactive = false,
     transparent_mode = true,

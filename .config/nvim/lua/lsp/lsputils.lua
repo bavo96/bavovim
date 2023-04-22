@@ -57,8 +57,9 @@ function M.settings(server)
                     analysis = {
                         autoSearchPaths = true,
                         diagnosticMode = "workspace",
-                        useLibraryCodeForTypes = true
-                    }
+                        useLibraryCodeForTypes = true,
+                        typeCheckingMode = 'off'
+                    },
                 }
             }
     end
@@ -97,8 +98,8 @@ function M.on_attach(server, buff)
     local opts = { buffer = buff }
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<C-d>', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', '<C-u>', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<C-d>', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<C-u>', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', 'gll', vim.diagnostic.setloclist)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)

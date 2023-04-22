@@ -22,6 +22,16 @@ local options = {
         enable = true,
         update_root = true,
     },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = false,
+        debounce_delay = 50,
+        severity = {
+          min = vim.diagnostic.severity.HINT,
+          max = vim.diagnostic.severity.ERROR,
+        },
+    }
 }
 
 -- setup with some options

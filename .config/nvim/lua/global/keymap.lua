@@ -7,8 +7,8 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 
 -- Turn off command history in vim
-vim.keymap.set('n', 'q:', '<nop>', opt)
-vim.keymap.set('n', 'Q', '<nop>', opt)
+vim.keymap.set('n', 'q:', '<Nop>', opt)
+vim.keymap.set('n', 'Q', '<Nop>', opt)
 
 -- barbar.nvim
 -- + Map control+q to quit buffer

@@ -18,7 +18,7 @@ chmod +x update_local.sh
 - Link: https://github.com/neovim/neovim/wiki/Installing-Neovim
 ### tmux: 
 - Link: https://github.com/tmux/tmux/wiki/Installing
-- Install tmux plugins: https://github.com/tmux-plugins/tpm#installation
+- Install tmux plugin manager: https://github.com/tmux-plugins/tpm#installation
 - Source tmux: `tmux source ~/.tmux.conf`
 ### NerdFonts: 
 - Link: https://www.nerdfonts.com/font-downloads
@@ -42,6 +42,14 @@ chmod +x update_local.sh
 - Install oh-my-bash: https://github.com/ohmybash/oh-my-bash#basic-installation
 
 ## 2. Useful mappings
+### tmux (prefix: Control + g)
+| Keys | Description |
+--- | --- |
+| prefix + I | Install tmux's plugins. |
+| prefix + h/j/k/l | Navigation in tmux. |
+| prefix + H/J/K/L | Resize current pane. |
+| prefix + d | Detach current session. |
+
 ### barbar
 | Keys | Description |
 --- | --- |

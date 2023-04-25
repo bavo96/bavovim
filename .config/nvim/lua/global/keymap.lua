@@ -10,6 +10,10 @@ vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 vim.keymap.set('n', 'q:', '<Nop>', opt)
 vim.keymap.set('n', 'Q', '<Nop>', opt)
 
+-- Tab block of code mutiple time
+vim.keymap.set('v', '<Tab>', '>gv', { silent = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { silent = true })
+
 -- barbar.nvim
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)
@@ -50,6 +54,7 @@ function _G.set_terminal_keymaps()
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
+
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
@@ -58,4 +63,3 @@ vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { n
 
 -- Mason
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })
-

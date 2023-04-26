@@ -53,6 +53,7 @@ chmod +x update_local.sh
 | prefix + r | Source tmux. |
 | prefix + I | Install tmux's plugins. |
 | prefix + Alt + u | Remove tmux's plugins. |
+| prefix + [ | Enter copy mode in terminal. |
 | Control + d | Quit current pane. |
 
 #### some command lines

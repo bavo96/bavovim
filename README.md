@@ -45,10 +45,22 @@ chmod +x update_local.sh
 ### tmux (prefix: Control + g)
 | Keys | Description |
 --- | --- |
-| prefix + I | Install tmux's plugins. |
 | prefix + h/j/k/l | Navigation in tmux. |
 | prefix + H/J/K/L | Resize current pane. |
 | prefix + d | Detach current session. |
+| prefix + s | Show all sessions. |
+| prefix + w | Show all windows. |
+| prefix + r | Source tmux. |
+| prefix + I | Install tmux's plugins. |
+| prefix + Alt + u | Remove tmux's plugins. |
+| Control + d | Quit current pane. |
+
+#### some command lines
+```bash
+tmux new -s <name> # Create new session
+tmux attach -t <name> # Attach a session
+
+```
 
 ### barbar
 | Keys | Description |

@@ -19,7 +19,6 @@ chmod +x update_local.sh
 ### tmux: 
 - Link: https://github.com/tmux/tmux/wiki/Installing
 - Install tmux plugin manager: https://github.com/tmux-plugins/tpm#installation
-- Source tmux: `tmux source ~/.tmux.conf`
 ### NerdFonts: 
 - Link: https://www.nerdfonts.com/font-downloads
 - Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`
@@ -52,15 +51,19 @@ chmod +x update_local.sh
 | prefix + w | Show all windows. |
 | prefix + r | Source tmux. |
 | prefix + I | Install tmux's plugins. |
+| prefix + , | Rename windows. |
 | prefix + Alt + u | Remove tmux's plugins. |
-| prefix + [ | Enter copy mode in terminal. |
-| Control + d | Quit current pane. |
-
+| prefix + [ | Enter copy mode. |
+| Control + c | Exit copy mode. |
+| prefix + x | Quit current pane with confirmation. |
+| prefix + v | Quit current window without confirmation. |
+| Control + d | Quit current pane without confirmation (Can't use in neovim). |
+| prefix + N | Create a template window in tmux (top neovim, bottom terminal). |
 #### some command lines
 ```bash
 tmux new -s <name> # Create new session
 tmux attach -t <name> # Attach a session
-
+tmux source-file ~/.tmux.conf
 ```
 
 ### barbar

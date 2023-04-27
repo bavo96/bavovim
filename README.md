@@ -19,6 +19,7 @@ chmod +x update_local.sh
 ### tmux: 
 - Link: https://github.com/tmux/tmux/wiki/Installing
 - Install tmux plugin manager: https://github.com/tmux-plugins/tpm#installation
+- In this case, change path to `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
 ### NerdFonts: 
 - Link: https://www.nerdfonts.com/font-downloads
 - Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`

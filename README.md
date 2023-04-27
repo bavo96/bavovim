@@ -18,20 +18,20 @@ chmod +x update_local.sh
 - Link: https://github.com/tmux/tmux/wiki/Installing
 - Install tmux plugin manager: https://github.com/tmux-plugins/tpm#installation
 - In this case, change path to `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
-### NerdFonts: 
+### nerdfonts: 
 - Link: https://www.nerdfonts.com/font-downloads
 - Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`
 ### packer (neovim's plugins manager): 
 - Link: https://github.com/wbthomason/packer.nvim#quickstart
-### Lazygit
+### lazygit
 - Link: https://github.com/jesseduffield/lazygit
-### LSP
+### lsp
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 - Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'dartls', 'bashls'
 ### ripgrep (for telescope)
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim
-- Change color in [gruvbox](./config/)
+- Change color in [gruvbox](./.config/)
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh

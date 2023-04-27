@@ -137,7 +137,6 @@ tmux source-file ~/.tmux.conf
 - Mapping in vim: https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
 - https://alpha2phi.medium.com/neovim-for-beginners-fuzzy-file-search-part-1-9df21c0e2c84
 - Link: https://github.com/rockerBOO/awesome-neovim
-- We may need `xclip` (on Linux) or `pbcopy` (on Mac) to copy text to clipboard in vim.
 - About lspconfig, according to chatgpt:
     + `neovim/nvim-lspconfig`: This plugin provides configurations for Neovim's built-in Language Server Protocol (LSP), which allows for IDE-like features such as code completion, diagnostics, and more.
     + `hrsh7th/nvim-cmp`: This plugin is an autocompletion plugin which provides IDE-like autocompletion for code. It works with various sources such as LSP, snippets, spell, path, buffer, and more.

@@ -8,8 +8,6 @@ My custom vim's settings.
 chmod +x update_local.sh
 ./update_local.sh
 ```
-### Neovim
-- link: https://github.com/neovim/neovim/wiki/Installing-Neovim
 ### wezterm: 
 - Link: https://wezfurlong.org/wezterm/installation.html
 - Move between words in command line (macOS): https://github.com/wez/wezterm/issues/253

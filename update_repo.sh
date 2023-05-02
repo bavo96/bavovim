@@ -7,5 +7,5 @@ then
     rsync -a --delete ~/.zshrc .zshrc
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]
 then
-    echo "Copy bashrc to repo"
+    rsync -a --delete ~/.bashrc .bashrc
 fi

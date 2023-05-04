@@ -125,18 +125,13 @@ function M.on_attach(server, buff)
         augroup END
     ]]
 
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    -- you can reuse a shared lspconfig on_attach callback here
-    if server.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = buff })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = buff,
-            callback = function()
-                vim.lsp.buf.format { async = true }
-            end,
-        })
-    end
+    -- Auto formatting
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = buff,
+        callback = function()
+            vim.lsp.buf.format { async = false }
+        end
+    })
 end
 
 function M.capabilities()

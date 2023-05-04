@@ -51,17 +51,17 @@ function M.settings(server)
                 configurationSources = { 'flake8' },
             }
         }
-        elseif server == 'pyright' then
-            return {
-                python = {
-                    analysis = {
-                        autoSearchPaths = true,
-                        diagnosticMode = "workspace",
-                        useLibraryCodeForTypes = true,
-                        typeCheckingMode = 'off'
-                    },
-                }
+    elseif server == 'pyright' then
+        return {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = 'off'
+                },
             }
+        }
     end
     return {}
 end
@@ -111,12 +111,32 @@ function M.on_attach(server, buff)
     vim.keymap.set('n', '<space>f', function()
         vim.lsp.buf.format { async = true }
     end, opts)
-    -- Automatically show diagnostic 
+    -- Automatically show diagnostic
     vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
     -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     -- vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
-    -- require 'illuminate'.on_attach(server)
-    --
+
+    -- Auto document highlighting
+    vim.cmd [[
+        augroup document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+    ]]
+
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- you can reuse a shared lspconfig on_attach callback here
+    if server.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = buff })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = buff,
+            callback = function()
+                vim.lsp.buf.format { async = true }
+            end,
+        })
+    end
 end
 
 function M.capabilities()

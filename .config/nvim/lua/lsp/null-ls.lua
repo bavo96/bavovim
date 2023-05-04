@@ -4,6 +4,7 @@ if not status_ok then
     return
 end
 
+
 local sources = {
     -- python
     null_ls.builtins.formatting.black,
@@ -11,5 +12,5 @@ local sources = {
 }
 
 null_ls.setup {
-    sources = sources
+    sources = sources,
 }

@@ -93,8 +93,11 @@ export ARCHFLAGS="-arch x86_64"
  
 source /etc/profile.d/bash_completion.sh
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
+# Stop activate base environment anaconda
+export CONDA_AUTO_ACTIVATE_BASE=false
 __conda_setup="$('/home/bavo/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -122,4 +125,8 @@ export QT4_IM_MODULE=ibus
 # Dành cho những phần mềm dùng thư viện đồ họa clutter/OpenGL
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus
+
+# Turn off username + computer name
+export PS1="\W \$"
+
 

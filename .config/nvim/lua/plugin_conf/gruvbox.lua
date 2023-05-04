@@ -23,16 +23,19 @@ gruvbox.setup({
     invert_tabline = false,
     invert_intend_guides = false,
     inverse = true, -- invert background for search, diffs, statuslines and errors
-    contrast = "", -- can be "hard", "soft" or empty string
+    contrast = "",  -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
         CursorLine = { bg = '#282828' }, -- Change cursor color
-        Search = { fg = '#458588' }
+        Search = { fg = '#458588' },
+        LspReferenceText = { bg = '#504945' },
+        LspReferenceRead = { bg = '#504945' },
+        LspReferenceWrite = { bg = '#504945' }
     },
     dim_inactive = false,
     transparent_mode = true,
 })
-vim.cmd("colorscheme gruvbox")
 
 vim.opt.background = 'dark'
+
 vim.cmd([[colorscheme gruvbox]])

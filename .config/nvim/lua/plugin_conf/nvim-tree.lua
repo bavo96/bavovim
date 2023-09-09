@@ -12,6 +12,7 @@ vim.g.loaded_netrwPlugin = 1
 local options = {
     filters = {
         dotfiles = false,
+        git_ignored = false
     },
     disable_netrw = true,
     hijack_netrw = true,
@@ -36,6 +37,13 @@ local options = {
         enable = true,
         debounce_delay = 50,
         ignore_dirs = {},
+    },
+    git = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = true,
+        disable_for_dirs = {},
+        timeout = 400,
     },
 }
 

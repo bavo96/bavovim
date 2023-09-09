@@ -9,7 +9,11 @@ export OSH='/home/bavo/.oh-my-bash'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
+# https://github.com/ohmybash/oh-my-bash/tree/master/themes/powerline
 OSH_THEME="powerline"
+# POWERLINE_PROMPT_USER_INFO_MODE="sudo"
+# THEME_CLOCK_FORMAT="%d-%m-%Y %H:%M:%S"
+POWERLINE_PROMPT="user_info scm python_venv ruby cwd"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -22,10 +26,10 @@ export UPDATE_OSH_DAYS=13
 
 # To disable the uses of "sudo" by oh-my-bash, please set "false" to
 # this variable.  The default behavior for the empty value is "true".
-OMB_USE_SUDO=false
+OMB_USE_SUDO=true
 
 # To enable/disable display of Python virtualenv and condaenv
-OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
+OMB_PROMPT_SHOW_PYTHON_VENV=true # enable
 
 # Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
 # Custom completions may be added to ~/.oh-my-bash/custom/completions/
@@ -93,7 +97,6 @@ export ARCHFLAGS="-arch x86_64"
  
 source /etc/profile.d/bash_completion.sh
 
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # Stop activate base environment anaconda
@@ -111,7 +114,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export CUDA_VERSION=cuda-10.1
+export CUDA_VERSION=cuda-12
 export CUDA_HOME=/usr/local/$CUDA_VERSION
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/$CUDA_VERSION/lib64:/usr/local/$CUDA_VERSION/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
@@ -126,7 +129,5 @@ export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus
 
-# Turn off username + computer name
-export PS1="\W \$"
-
-
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"

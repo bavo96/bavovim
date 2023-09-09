@@ -39,7 +39,7 @@ return {
     },
     keys = {
         -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
-        { key = "LeftArrow", mods = "OPT", action = wezterm.action { SendString = "\x1bb" } },
+        { key = "LeftArrow",  mods = "OPT", action = wezterm.action { SendString = "\x1bb" } },
         -- Make Option-Right equivalent to Alt-f; forward-word
         { key = "RightArrow", mods = "OPT", action = wezterm.action { SendString = "\x1bf" } },
         -- {key='C',mods='SHIFT|CTRL', action=wezterm.action.CopyTo 'ClipboardAndPrimarySelection', },
@@ -49,7 +49,7 @@ return {
     colors = {
         scrollbar_thumb = 'gray',
     },
-    check_for_updates = true,
+    check_for_updates = false,
     show_update_window = false,
     check_for_updates_interval_seconds = 3600 * 24 * 7,
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }

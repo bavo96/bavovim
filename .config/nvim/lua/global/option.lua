@@ -43,7 +43,7 @@ vim.opt.fcs = 'eob: '
 vim.o.updatetime = 250
 
 -- Set max pattern when reading a file
-vim.opt.mmp=5000
+vim.opt.mmp = 5000
 
 -- Intelligibility configuration
 vim.opt.scrolloff = 7

@@ -28,10 +28,15 @@ local options = {
         show_on_open_dirs = false,
         debounce_delay = 50,
         severity = {
-          min = vim.diagnostic.severity.HINT,
-          max = vim.diagnostic.severity.ERROR,
+            min = vim.diagnostic.severity.HINT,
+            max = vim.diagnostic.severity.ERROR,
         },
-    }
+    },
+    filesystem_watchers = {
+        enable = true,
+        debounce_delay = 50,
+        ignore_dirs = {},
+    },
 }
 
 -- setup with some options
@@ -52,7 +57,7 @@ local function open_nvim_tree(data)
     -- open the tree but don't focus it
     require("nvim-tree.api").tree.toggle({ focus = false })
     -- Emit BufWinEnter
-    vim.api.nvim_exec_autocmds('BufWinEnter', {buffer = require('nvim-tree.view').get_bufnr()})
+    vim.api.nvim_exec_autocmds('BufWinEnter', { buffer = require('nvim-tree.view').get_bufnr() })
 end
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
     callback = open_nvim_tree
@@ -65,6 +70,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         local layout = vim.api.nvim_call_function("winlayout", {})
         if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then
-            vim.cmd("confirm quit") end
+            vim.cmd("confirm quit")
+        end
     end
 })

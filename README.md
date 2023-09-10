@@ -9,7 +9,7 @@ chmod +x update_local.sh
 ./update_local.sh
 ```
 ### wezterm: 
-- Link: https://wezfurlong.org/wezterm/installation.html
+- Link: https://wezfurlong.org/wezterm/installation.html (install .deb file)
 - Move between words in command line (macOS): https://github.com/wez/wezterm/issues/253
 - Error when using font in wezterm: https://github.com/wez/wezterm/issues/2660
 ### neovim: 

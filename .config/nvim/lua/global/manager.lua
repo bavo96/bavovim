@@ -108,12 +108,6 @@ return require('packer').startup({
         use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
         use 'L3MON4D3/LuaSnip'         -- Snippets plugin
 
-        -- TODO: highlight words 
-        -- use {
-        --     'rrethy/vim-illuminate',
-        --     config = get_plugin_conf('vim-illuminate')(),
-        -- }
-        
         -- some utility functions for neovim plugin
         use "nvim-lua/plenary.nvim"
 
@@ -137,7 +131,7 @@ return require('packer').startup({
             config = get_plugin_conf('nvim-scrollbar')()
         }
 
-        -- TODO: show image in neovim 
+        -- TODO: show image in neovim
 
         -- TODO: git
     end,

@@ -114,7 +114,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export CUDA_VERSION=cuda-12
+export CUDA_VERSION=cuda-11.1
 export CUDA_HOME=/usr/local/$CUDA_VERSION
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/$CUDA_VERSION/lib64:/usr/local/$CUDA_VERSION/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin

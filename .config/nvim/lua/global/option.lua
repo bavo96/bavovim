@@ -3,7 +3,7 @@ local indent = 4
 -- Set key leader
 vim.g.mapleader = " "
 
--- Set tab and indent
+-- Set tab and indent (tab as space, not real tab)
 vim.opt.tabstop = indent
 vim.opt.softtabstop = indent
 vim.opt.shiftwidth = indent
@@ -18,7 +18,11 @@ vim.opt.fileformat = 'unix'
 
 -- Show some invisible characters
 vim.opt.list = true
-vim.opt.listchars = { tab = '>~>' }
+-- vim.opt.listchars = { tab = '>~>' }
+vim.opt.listchars = {
+    tab = '>~',
+    space = '·'
+}
 
 -- Set termguicolors to enable highlight groups
 vim.opt.termguicolors = true

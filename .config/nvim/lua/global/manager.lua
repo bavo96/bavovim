@@ -59,10 +59,10 @@ return require('packer').startup({
         }
 
         -- show indentation
-        -- use {
-        --     'lukas-reineke/indent-blankline.nvim',
-        --     config = get_plugin_conf('indent-blackline')(),
-        -- }
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = get_plugin_conf('indent-blackline')(),
+        }
 
         -- code color (tree parsing)
         use {

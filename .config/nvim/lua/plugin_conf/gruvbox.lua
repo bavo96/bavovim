@@ -30,7 +30,8 @@ gruvbox.setup({
         Search = { fg = '#458588' },
         LspReferenceText = { bg = '#504945' },
         LspReferenceRead = { bg = '#504945' },
-        LspReferenceWrite = { bg = '#504945' }
+        LspReferenceWrite = { bg = '#504945' },
+        Whitespace = { fg = '#2c2e2e' }
     },
     dim_inactive = false,
     transparent_mode = true,

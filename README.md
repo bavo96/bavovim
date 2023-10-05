@@ -13,7 +13,12 @@ chmod +x update_local.sh
 - Move between words in command line (macOS): https://github.com/wez/wezterm/issues/253
 - Error when using font in wezterm: https://github.com/wez/wezterm/issues/2660
 ### neovim: 
-- Link: https://github.com/neovim/neovim/wiki/Installing-Neovim
+- Link: https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
+- ```bash
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod +x nvim.appimage
+  sudo mv nvim.appimage /usr/local/bin/nvim # Put in $PATH
+  ```
 ### tmux: 
 - Link: https://github.com/tmux/tmux/wiki/Installing
 - Install tmux plugin manager: https://github.com/tmux-plugins/tpm#installation

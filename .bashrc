@@ -118,7 +118,7 @@ export CUDA_VERSION=cuda-11.3
 export CUDA_HOME=/usr/local/$CUDA_VERSION
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/$CUDA_VERSION/lib64:/usr/local/$CUDA_VERSION/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
-export CUDA_VISIBLE_DEVICES=0
+# export CUDA_VISIBLE_DEVICES=0
 
 # ibus
 export GTK_IM_MODULE=xim # đổi thành xim

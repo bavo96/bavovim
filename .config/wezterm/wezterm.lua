@@ -12,7 +12,7 @@ local function set_brightness()
 end
 
 return {
-    front_end = "OpenGL",
+    front_end = "WebGpu",
     prefer_egl = true,
     font = wezterm.font_with_fallback {
         'JetBrains Mono',

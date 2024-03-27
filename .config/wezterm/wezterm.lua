@@ -52,7 +52,6 @@ return {
         scrollbar_thumb = 'gray',
     },
     check_for_updates = false,
-    show_update_window = false,
     check_for_updates_interval_seconds = 3600 * 24 * 7,
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 }

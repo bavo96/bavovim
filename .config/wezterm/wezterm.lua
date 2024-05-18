@@ -20,7 +20,7 @@ return {
         'DejaVu Sans',
     },
     color_scheme = 'GruvboxDarkHard',
-    window_background_image = wezterm.home_dir .. '/.config/wezterm/batman.jpg',
+    window_background_image = wezterm.home_dir .. '/.config/wezterm/black_background.jpg',
     window_background_image_hsb = {
         -- Darken the background image by reducing it to 1/3rd
         brightness = set_brightness(),
@@ -52,7 +52,6 @@ return {
         scrollbar_thumb = 'gray',
     },
     check_for_updates = false,
-    show_update_window = false,
     check_for_updates_interval_seconds = 3600 * 24 * 7,
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 }

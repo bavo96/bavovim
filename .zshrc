@@ -30,7 +30,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
@@ -53,6 +52,7 @@ export ARCHFLAGS="-arch arm64"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/bangvo/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -69,4 +69,3 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export DEFAULT_USER=$USER
-

@@ -114,7 +114,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export CUDA_VERSION=cuda-11.3
+export CUDA_VERSION=cuda-12.1
 export CUDA_HOME=/usr/local/$CUDA_VERSION
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/$CUDA_VERSION/lib64:/usr/local/$CUDA_VERSION/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
@@ -129,6 +129,10 @@ export QT4_IM_MODULE=ibus
 # Dành cho những phần mềm dùng thư viện đồ họa clutter/OpenGL
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus
+
+# nvim
+export PATH="$PATH:/opt/nvim/"
+
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"

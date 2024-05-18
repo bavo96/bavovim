@@ -13,11 +13,12 @@ chmod +x update_local.sh
 - Move between words in command line (macOS): https://github.com/wez/wezterm/issues/253
 - Error when using font in wezterm: https://github.com/wez/wezterm/issues/2660
 ### neovim: 
-- Link: https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
+- Link: https://github.com/neovim/neovim/blob/master/INSTALL.md#appimage-universal-linux-package
 - ```bash
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod +x nvim.appimage
-  sudo mv nvim.appimage /usr/local/bin/nvim # Put in $PATH
+  chmod u+x nvim.appimage
+  mkdir -p /opt/nvim
+  mv nvim.appimage /opt/nvim/nvim
   ```
 ### tmux: 
 - Link: https://github.com/tmux/tmux/wiki/Installing
@@ -26,13 +27,13 @@ chmod +x update_local.sh
 ### nerdfonts: 
 - Link: https://www.nerdfonts.com/font-downloads
 - Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`
-### packer (neovim's plugins manager): 
-- Link: https://github.com/wbthomason/packer.nvim#quickstart
+### lazy.nvim (plugin manager)
+https://github.com/folke/lazy.nvim?tab=readme-ov-file#-installation
 ### lazygit
 - Link: https://github.com/jesseduffield/lazygit
 ### lsp
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'dartls', 'bashls'
+- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: 'pyright', 'lua_ls', 'bashls'
 ### ripgrep (for telescope)
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim

@@ -38,8 +38,8 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opt)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opt)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opt)
 
--- packer
-vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>', opt)
+-- lazy.nvim
+vim.keymap.set('n', '<leader>ll', ':Lazy home<CR>', opt)
 
 -- telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opt)

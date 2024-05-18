@@ -39,10 +39,10 @@ tmux source-file ~/.tmux.conf
 --- | --- |
 | Control + p | Toggle tree. |
 | Control + h/j/k/l | Navigation in nvim-tree. |
-## packer
+## lazy.nvim
 | Keys | Description |
 --- | --- |
-| Space + ps | PackerSync |
+| Space + ll | Lazy home |
 ## telescope
 | Keys | Description |
 --- | --- |

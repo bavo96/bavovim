@@ -28,7 +28,7 @@ chmod +x update_local.sh
 - Link: https://www.nerdfonts.com/font-downloads
 - Install `JetBrains Mono`, `DejaVu Sans`, `Dejavu Sans Mono`
 ### lazy.nvim (plugin manager)
-https://github.com/folke/lazy.nvim?tab=readme-ov-file#-installation
+- Link: https://github.com/folke/lazy.nvim?tab=readme-ov-file#-installation
 ### lazygit
 - Link: https://github.com/jesseduffield/lazygit
 ### lsp

@@ -69,3 +69,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export DEFAULT_USER=$USER
+export PATH="$PATH:/opt/nvim-macos-arm64/bin"
+

@@ -32,21 +32,25 @@ function M.settings(server)
         return {
             pylsp = {
                 plugins = {
-                    -- Turn these off to use flake8
+                    -- Turn these off to use flake8, see: https://github.com/python-lsp/python-lsp-server
                     pycodestyle = {
                         enabled = false,
                     },
                     mccabe = { enabled = false },
-                    -- Linter
                     pyflakes = { enabled = false },
-                    pylint = { enabled = false },
+
+                    -- Turn these off to use black, see: https://github.com/python-lsp/python-lsp-black
+                    autopep8 = { enabled = false },
+                    yapf = { enabled = false },
+
+                    -- Linter
                     flake8 = { enabled = true },
                     -- Formatter
-                    autopep8 = { enabled = true },
-                    -- yapf = {
-                    --     enabled = true,
-                    --     args = { '--style=pep8' }
-                    -- }
+                    black = { enabled = true },
+                    -- Sort libs
+                    isort = { enabled = true },
+
+
                 },
                 configurationSources = { 'flake8' },
             }

@@ -6,7 +6,7 @@ return {
         local lsputils = require('plugins.utils.lsp-utils');
 
         -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-        local servers = { 'pyright', 'lua_ls', 'bashls' };
+        local servers = { 'pylsp', 'lua_ls', 'bashls' };
 
         for _, server in ipairs(servers) do
             require("lspconfig")[server].setup(

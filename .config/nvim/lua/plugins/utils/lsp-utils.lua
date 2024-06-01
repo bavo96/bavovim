@@ -130,12 +130,12 @@ function M.on_attach(server, buff)
     ]]
 
     -- Auto formatting
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = buff,
-        callback = function()
-            vim.lsp.buf.format { async = false }
-        end
-    })
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --     buffer = buff,
+    --     callback = function()
+    --         vim.lsp.buf.format { async = false }
+    --     end
+    -- })
 end
 
 function M.capabilities()

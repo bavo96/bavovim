@@ -44,6 +44,8 @@ return {
         { key = "LeftArrow",  mods = "OPT", action = wezterm.action { SendString = "\x1bb" } },
         -- Make Option-Right equivalent to Alt-f; forward-word
         { key = "RightArrow", mods = "OPT", action = wezterm.action { SendString = "\x1bf" } },
+        -- Make Command-r equivalent to reset current wezterm terminal
+        { key = "r",          mods = "CMD", action = wezterm.action.ResetTerminal },
         -- {key='C',mods='SHIFT|CTRL', action=wezterm.action.CopyTo 'ClipboardAndPrimarySelection', },
     },
     enable_scroll_bar = true,

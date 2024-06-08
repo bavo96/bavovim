@@ -54,7 +54,6 @@ function _G.set_terminal_keymaps()
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
-
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
@@ -63,3 +62,6 @@ vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { n
 
 -- Mason
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })
+
+-- Neogen (docstrings)
+vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opt)

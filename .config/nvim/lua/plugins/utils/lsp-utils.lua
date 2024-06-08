@@ -129,7 +129,12 @@ function M.on_attach(server, buff)
         augroup END
     ]]
 
-    -- Auto formatting
+    -- TODO: Inlay hint of neovim
+    -- if server.server_capabilities.inlayHintProvider then
+    --     vim.lsp.inlay_hint.enable(buff, true)
+    -- end
+
+    -- TODO: Auto formatting when saving file (should adjust the row's length in black)
     -- vim.api.nvim_create_autocmd("BufWritePre", {
     --     buffer = buff,
     --     callback = function()

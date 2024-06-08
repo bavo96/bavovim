@@ -64,4 +64,4 @@ vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { n
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })
 
 -- Neogen (docstrings)
-vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opt)
+vim.api.nvim_set_keymap("n", "<Leader>ds", ":lua require('neogen').generate()<CR>", opt)

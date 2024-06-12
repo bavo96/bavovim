@@ -74,6 +74,10 @@ tmux source-file ~/.tmux.conf
 | Control + d | Go to next diagnostic. |
 | Control + u | Go to previous diagnostic. |
 | gll | Show list of diagnostics. |
+## neogen
+| Keys | Description |
+--- | --- |
+| Space + ds | Add docstring for python. |
 
 ## Others
 | Keys | Description |

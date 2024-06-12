@@ -28,46 +28,16 @@ function M.settings(server)
                 showTodos = true
             }
         }
-    elseif server == 'pylsp' then
+    elseif server == 'ruff' then
         return {
-            pylsp = {
-                plugins = {
-                    -- Turn these off to use flake8, see: https://github.com/python-lsp/python-lsp-server
-                    pycodestyle = {
-                        enabled = false,
-                    },
-                    mccabe = { enabled = false },
-                    pyflakes = { enabled = false },
-
-                    -- Turn these off to use black, see: https://github.com/python-lsp/python-lsp-black
-                    autopep8 = { enabled = false },
-                    yapf = { enabled = false },
-
-                    -- Linter
-                    flake8 = { enabled = true },
-                    -- Formatter
-                    black = { enabled = true },
-                    -- Sort libs
-                    isort = { enabled = true },
-
-
-                },
-                configurationSources = { 'flake8' },
-            }
-        }
-    elseif server == 'pyright' then
-        return {
-            python = {
-                analysis = {
-                    autoSearchPaths = true,
-                    diagnosticMode = "workspace",
-                    useLibraryCodeForTypes = true,
-                    typeCheckingMode = 'off'
-                },
+            init_options = {
+                settings = {
+                    -- Any extra CLI arguments for `ruff` go here.
+                    args = {},
+                }
             }
         }
     end
-    return {}
 end
 
 function M.on_attach(server, buff)

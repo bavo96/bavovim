@@ -39,6 +39,10 @@ chmod +x update_local.sh
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim
 - Change color in [gruvbox](./.config/)
+### ChatGPT
+- Add OPENAI_API_KEY to environment variable
+### Copilot
+- Github account -> Your copilot -> Copilot in your IDE
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh

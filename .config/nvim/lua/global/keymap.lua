@@ -54,6 +54,7 @@ function _G.set_terminal_keymaps()
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
+
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
@@ -65,3 +66,25 @@ vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silen
 
 -- Neogen (docstrings)
 vim.api.nvim_set_keymap("n", "<Leader>ds", ":lua require('neogen').generate()<CR>", opt)
+
+-- ChatGPT
+vim.api.nvim_set_keymap("n", "<Leader>cp", "<cmd>ChatGPT<CR>", opt)
+local modes = { "n", "v" }
+for _, mode in ipairs(modes) do
+    vim.api.nvim_set_keymap(mode, "ct", "<cmd>ChatGPTRun translate<CR>", opt)
+    vim.api.nvim_set_keymap(mode, "cs", "<cmd>ChatGPTRun summarize<CR>", opt)
+    vim.api.nvim_set_keymap(mode, "cd", "<cmd>ChatGPTRun docstring<CR>", opt)
+    vim.api.nvim_set_keymap(mode, "ce", "<cmd>ChatGPTRun explain_code<CR>", opt)
+    vim.api.nvim_set_keymap(mode, "cf", "<cmd>ChatGPTRun fix_bugs<CR>", opt)
+    vim.api.nvim_set_keymap(mode, "cg", "<cmd>ChatGPTRun grammar_correction<CR>", opt)
+end
+
+-- Copilot
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+
+-- image_preview.nvim
+vim.keymap.set('n', '<leader>p', ':lua require("image_preview").preview()<CR>', opt)

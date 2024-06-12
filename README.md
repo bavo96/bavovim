@@ -34,6 +34,7 @@ chmod +x update_local.sh
 ### lsp
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 - Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: `pylsp`, `lua_ls`, `bashls`, `ruff_lsp`
+- Use mason to install dependencies like `isort`, `ruff`
 ### ripgrep (for telescope)
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim

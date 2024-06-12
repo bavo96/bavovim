@@ -43,6 +43,7 @@ chmod +x update_local.sh
 - Add OPENAI_API_KEY to environment variable
 ### Copilot
 - Github account -> Your copilot -> Copilot in your IDE
+- Type `:Copilot setup` to set up copilot on a new computer
 ### For macOS only
 - Install oh-my-zsh: https://ohmyz.sh/#install 
 - Activate anaconda after installing oh-my-zsh: https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh

@@ -23,7 +23,6 @@ tmux new -s <name> # Create new session
 tmux attach -t <name> # Attach a session
 tmux source-file ~/.tmux.conf
 ```
-
 ## barbar
 | Keys | Description |
 --- | --- |
@@ -33,7 +32,7 @@ tmux source-file ~/.tmux.conf
 ## Comment
 | Keys | Description |
 --- | --- |
-| Control + n | Toggle comment in normal and visual modes. |
+| (visual mode) Control + n | Toggle comment in normal and visual modes. |
 ## nvim-tree
 | Keys | Description |
 --- | --- |
@@ -78,6 +77,20 @@ tmux source-file ~/.tmux.conf
 | Keys | Description |
 --- | --- |
 | Space + ds | Add docstring for python. |
+## ChatGPT
+| Keys | Description |
+--- | --- |
+| Space + cp | Open interactive window to chat with ChatGPT. |
+| (visual mode) ct | Translate a text block. |
+| (visual mode) cs | Summarize a text block. |
+| (visual mode) cd | Create docstring. |
+| (visual mode) ce | Explain a code block. |
+| (visual mode) cf | Fix bugs in a code block. |
+| (visual mode) cg | Correct grammar in a text block. |
+## Copilot
+| Keys | Description |
+--- | --- |
+| Control + J | Autocompletion using copilot. |
 
 ## Others
 | Keys | Description |

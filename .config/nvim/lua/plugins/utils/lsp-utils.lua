@@ -21,14 +21,15 @@ function M.settings(server)
                 },
             }
         }
-    elseif server == 'dartls' then
+    elseif server == 'bashls' then
         return {
-            dart = {
-                completeFunctionCalls = true,
-                showTodos = true
+            {
+                bashIde = {
+                    globPattern = "*@(.sh|.inc|.bash|.command)"
+                }
             }
         }
-    elseif server == 'ruff' then
+    elseif server == 'ruff_lsp' then -- ===> Linting, Formatting, Organization Imports in python
         return {
             init_options = {
                 settings = {
@@ -37,10 +38,48 @@ function M.settings(server)
                 }
             }
         }
+    elseif server == 'pylsp' then -- ===> Completions, Definitions, Hover, References, Signature Help, and Symbols in Python
+        return {
+            pylsp = {
+                plugins = {
+                    -- Turn these off to use flake8, see: https://github.com/python-lsp/python-lsp-server
+                    pycodestyle = {
+                        enabled = false,
+                    },
+                    mccabe = { enabled = false },
+                    pyflakes = { enabled = false },
+
+                    -- Turn these off to use black, see: https://github.com/python-lsp/python-lsp-black
+                    autopep8 = { enabled = false },
+                    yapf = { enabled = false },
+
+                    -- Currenlty turn off to use ruff
+                    -- Linter
+                    flake8 = { enabled = false },
+                },
+                configurationSources = { 'flake8' },
+            }
+        }
+    elseif server == 'pyright' then -- ===> Still keep this for backup. Can use with ruff_lsp: https://github.com/astral-sh/ruff-lsp?tab=readme-ov-file#setup
+        return {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = 'off'
+                },
+            }
+        }
     end
 end
 
 function M.on_attach(server, buff)
+    -- Disable hover in favor of python lsp server
+    if server.name == 'ruff_lsp' then
+        server.server_capabilities.hoverProvider = false
+    end
+
     local config = {
         -- disable virtual text
         virtual_text = false,

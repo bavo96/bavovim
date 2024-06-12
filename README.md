@@ -40,7 +40,7 @@ chmod +x update_local.sh
 ### color in neovim
 - Change color in [gruvbox](./.config/)
 ### ChatGPT
-- Add OPENAI_API_KEY to environment variable
+- Add `OPENAI_API_KEY` to environment variable
 ### Copilot
 - Github account -> Your copilot -> Copilot in your IDE
 - Type `:Copilot setup` to set up copilot on a new computer

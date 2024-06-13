@@ -41,6 +41,14 @@ chmod +x update_local.sh
 - Change color in [gruvbox](./.config/)
 ### ChatGPT
 - First method (recommended): Use gpg to encrypt secret file and pass the decrypt command to `api_key_cmd` in (lua/chatgpt.lua)[./.config/nvim/lua/chatgpt.lua]
+ - Generate key/pair : `gpg --generate-key`
+  - Bug `gpg: agent_genkey failed: Timeout`:
+   - Run in sudo mode.
+   - From this (link)[https://superuser.com/questions/520980/how-to-force-gpg-to-use-console-mode-pinentry-to-prompt-for-passwords/521027#521027]
+    - `touch ~/.gnupg/gpg-agent.conf`
+    - Add `pinentry /usr/bin/pinentry-tty` to the file
+    - May need to install `sudo apt install pinentry-tty` and `sudo update-alternatives --config pinentry` to choose `pineentry-tty`
+   - Generate key again.
  - Create encrypted gpg file: `gpg --encrypt --output chatgpt_secret.gpg --recipient <recipient> chatgpt_secret.txt`
  - Decrypt file: `gpg --decrypt chatgpt_secret.gpg` (for local user only, otherwise must specify --local-user option)
 - Second method: - Add `OPENAI_API_KEY` to environment variable (not recommended)

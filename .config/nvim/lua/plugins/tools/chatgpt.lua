@@ -3,11 +3,14 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-        require("chatgpt").setup({
-            openai_params = {
-                model = "gpt-4o"
-            }
+        local home = vim.fn.expand("$HOME")
+        local cmd = "gpg --decrypt ".. home .. "/Desktop/chatgpt_secret.gpg"
 
+        require("chatgpt").setup({
+            api_key_cmd = cmd,
+            openai_params = {
+                model = "gpt-4o",
+            }
         })
     end,
     dependencies = {

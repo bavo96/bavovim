@@ -40,7 +40,10 @@ chmod +x update_local.sh
 ### color in neovim
 - Change color in [gruvbox](./.config/)
 ### ChatGPT
-- Add `OPENAI_API_KEY` to environment variable
+- First method (recommended): Use gpg to encrypt secret file and pass the decrypt command to `api_key_cmd` in (lua/chatgpt.lua)[./.config/nvim/lua/chatgpt.lua]
+ - Create encrypted gpg file: `gpg --encrypt --output chatgpt_secret.gpg --recipient <recipient> chatgpt_secret.txt`
+ - Decrypt file: `gpg --decrypt chatgpt_secret.gpg` (for local user only, otherwise must specify --local-user option)
+- Second method: - Add `OPENAI_API_KEY` to environment variable (not recommended)
 ### Copilot
 - Github account -> Your copilot -> Copilot in your IDE
 - Type `:Copilot setup` to set up copilot on a new computer

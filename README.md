@@ -39,6 +39,7 @@ chmod +x update_local.sh
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim
 - Change color in [gruvbox](./.config/)
+- Other top colorschemes: https://dotfyle.com/neovim/colorscheme/top
 ### ChatGPT
 - First method (recommended): Use gpg to encrypt secret file and pass the decrypt command to `api_key_cmd` in (lua/chatgpt.lua)[./.config/nvim/lua/chatgpt.lua]
  - Generate key/pair : `gpg --generate-key`

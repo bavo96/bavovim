@@ -91,6 +91,10 @@ tmux source-file ~/.tmux.conf
 | Keys | Description |
 --- | --- |
 | Control + J | Autocompletion using copilot. |
+## markdown-preview.nvim
+| Keys | Description |
+--- | --- |
+| Control + m | Toggle markdown preview. |
 
 ## Others
 | Keys | Description |

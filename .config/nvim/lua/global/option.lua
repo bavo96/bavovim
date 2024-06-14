@@ -57,4 +57,10 @@ vim.opt.swapfile = false
 vim.opt.mouse:append { a }
 vim.opt.cursorline = true
 
+-- Set modifiable to true
+if vim.bo.modifiable then
+   -- Your option setting code here
+    vim.bo.modifiable = true
+end
+
 -- vim.opt.deno = '$HOME/.deno/bin/deno'

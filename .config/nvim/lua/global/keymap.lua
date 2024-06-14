@@ -88,3 +88,6 @@ vim.g.copilot_no_tab_map = true
 
 -- image_preview.nvim
 vim.keymap.set('n', '<leader>p', ':lua require("image_preview").preview()<CR>', opt)
+
+-- markdown-preview.nvim
+vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreviewToggle', opt)

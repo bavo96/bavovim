@@ -79,6 +79,8 @@ function M.on_attach(server, buff)
     if server.name == 'ruff_lsp' then
         server.server_capabilities.hoverProvider = false
     end
+    local cap = server.resolved_capabilities
+
 
     local config = {
         -- disable virtual text
@@ -130,13 +132,16 @@ function M.on_attach(server, buff)
     -- vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
 
     -- Auto document highlighting
-    vim.cmd [[
+    -- https://github.com/haskell/haskell-language-server/issues/1148
+    if cap.document_highlight then
+        vim.cmd [[
         augroup document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
     ]]
+    end
 
     -- TODO: Inlay hint of neovim
     -- if server.server_capabilities.inlayHintProvider then

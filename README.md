@@ -44,17 +44,16 @@ chmod +x update_local.sh
 - Other top colorschemes: https://dotfyle.com/neovim/colorscheme/top
 ### ChatGPT
 - First method (recommended): Use gpg to encrypt secret file and pass the decrypt command to `api_key_cmd` in [lua/chatgpt.lua](./.config/nvim/lua/chatgpt.lua)
-    - Generate key/pair : `gpg --generate-key`
     - Bug `gpg: agent_genkey failed: Timeout`:
         - Run in sudo mode (not recommended).
         - From this [link](https://superuser.com/questions/520980/how-to-force-gpg-to-use-console-mode-pinentry-to-prompt-for-passwords/521027#521027)
-            - Create file `touch ~/.gnupg/gpg-agent.conf`
-            - Add `pinentry /usr/bin/pinentry-tty` to the file
-            - May need to install `sudo apt install pinentry-tty` and `sudo update-alternatives --config pinentry` to choose `pineentry-tty`
-   - Generate key again.
-   - Create encrypted gpg file: `gpg --encrypt --output chatgpt_secret.gpg --recipient <recipient> chatgpt_secret.txt`
-   - Decrypt file: `gpg --decrypt chatgpt_secret.gpg` (for local user only, otherwise must specify --local-user option)
-- Second method: - Add `OPENAI_API_KEY` to environment variable (not recommended)
+            - Install `sudo apt install pinentry-tty` and `sudo update-alternatives --config pinentry` to choose `pineentry-tty`
+    - Bug `gpg: can't connect to the agent: IPC connect call failed`:
+        - Make sure no wrong option in `~/.gnupg/gpg-agent.conf`
+    - Generate key/pair : `gpg --generate-key`
+    - Create encrypted gpg file: `gpg --encrypt --output chatgpt_secret.gpg --recipient <recipient> chatgpt_secret.txt` (<recipient> is the email of the recipient)
+    - Decrypt file: `gpg --decrypt chatgpt_secret.gpg` (for local user only, otherwise must specify --local-user option)
+- Second method: Add `OPENAI_API_KEY` to environment variable (not recommended)
 ### Copilot
 - Github account -> Your copilot -> Copilot in your IDE
 - Type `:Copilot setup` to set up copilot on a new computer

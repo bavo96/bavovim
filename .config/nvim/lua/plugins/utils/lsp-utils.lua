@@ -19,6 +19,7 @@ function M.settings(server)
                     -- Get the language server to recognize the `vim` global
                     globals = { 'vim', 'a' },
                 },
+                hint = { enable = true }
             }
         }
     elseif server == 'bashls' then
@@ -80,7 +81,6 @@ function M.on_attach(server, buff)
         server.server_capabilities.hoverProvider = false
     end
 
-
     local config = {
         -- disable virtual text
         virtual_text = false,
@@ -109,41 +109,22 @@ function M.on_attach(server, buff)
         width = 60,
     })
 
-    local opts = { buffer = buff }
-    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<C-d>', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<C-u>', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', 'gll', vim.diagnostic.setloclist)
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<space>f', function()
-        vim.lsp.buf.format { async = true }
-    end, opts)
     -- Automatically show diagnostic
     vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    -- vim.keymap.set('n', '<space>df', vim.lsp.buf.type_definition, opts)
 
     -- Auto document highlighting
-    -- https://github.com/haskell/haskell-language-server/issues/1148
-    vim.cmd [[
-        augroup document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-    ]]
+    -- https://github.com/haskell/haskell-language-server/issues/1148 (change to server_capabilities)
+    if server.server_capabilities.document_highlight then
+        vim.cmd [[
+            augroup document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]]
+    end
 
-    -- TODO: Inlay hint of neovim
-    -- if server.server_capabilities.inlayHintProvider then
-    --     vim.lsp.inlay_hint.enable(buff, true)
-    -- end
+
 
     -- TODO: Auto formatting when saving file (should adjust the row's length in black)
     vim.api.nvim_create_autocmd("BufWritePre", {

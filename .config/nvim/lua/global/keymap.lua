@@ -3,6 +3,35 @@ local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap
 local builtin = require('telescope.builtin')
 
+-- lsp
+local lspopt = { buffer = vim.api.nvim_get_current_buf() }
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, lspopt)
+vim.keymap.set('n', '<C-d>', vim.diagnostic.goto_next, lspopt)
+vim.keymap.set('n', '<C-u>', vim.diagnostic.goto_prev, lspopt)
+vim.keymap.set('n', 'gll', vim.diagnostic.setloclist)
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, lspopt)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, lspopt)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, lspopt)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, lspopt)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, lspopt)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, lspopt)
+vim.keymap.set('n', '<leader>f', function()
+    vim.lsp.buf.format { async = true }
+end, lspopt)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, lspopt)
+vim.keymap.set('n', '<leader>df', vim.lsp.buf.type_definition, lspopt)
+-- Toggle inlay hint of neovim
+if vim.lsp.inlay_hint then
+    vim.keymap.set('n', '<leader>hh',
+        function()
+            local hint_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = vim.api.nvim_get_current_buf() })
+            vim.lsp.inlay_hint.enable(not hint_enabled,
+                { bufnr = vim.api.nvim_get_current_buf() })
+        end)
+end
+
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 

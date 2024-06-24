@@ -79,7 +79,6 @@ function M.on_attach(server, buff)
     if server.name == 'ruff_lsp' then
         server.server_capabilities.hoverProvider = false
     end
-    local cap = server.resolved_capabilities
 
 
     local config = {
@@ -133,15 +132,13 @@ function M.on_attach(server, buff)
 
     -- Auto document highlighting
     -- https://github.com/haskell/haskell-language-server/issues/1148
-    if cap.document_highlight then
-        vim.cmd [[
+    vim.cmd [[
         augroup document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
     ]]
-    end
 
     -- TODO: Inlay hint of neovim
     -- if server.server_capabilities.inlayHintProvider then
@@ -149,12 +146,12 @@ function M.on_attach(server, buff)
     -- end
 
     -- TODO: Auto formatting when saving file (should adjust the row's length in black)
-    -- vim.api.nvim_create_autocmd("BufWritePre", {
-    --     buffer = buff,
-    --     callback = function()
-    --         vim.lsp.buf.format { async = false }
-    --     end
-    -- })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = buff,
+        callback = function()
+            vim.lsp.buf.format { async = false }
+        end
+    })
 end
 
 function M.capabilities()

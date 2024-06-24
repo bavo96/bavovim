@@ -10,6 +10,7 @@ return {
             api_key_cmd = cmd,
             openai_params = {
                 model = "gpt-4o",
+                max_tokens = 4096,
             }
         })
     end,

@@ -124,9 +124,7 @@ function M.on_attach(server, buff)
         ]]
     end
 
-
-
-    -- TODO: Auto formatting when saving file (should adjust the row's length in black)
+    -- Auto formatting when saving file
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = buff,
         callback = function()

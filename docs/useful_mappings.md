@@ -73,6 +73,11 @@ tmux source-file ~/.tmux.conf
 | Control + d | Go to next diagnostic. |
 | Control + u | Go to previous diagnostic. |
 | gll | Show list of diagnostics. |
+| Space + vv | Show lsp information on current buffer.|
+## inlay_hint (neovim)
+| Keys | Description |
+--- | --- |
+| Space + hh | Toggle inlay hint. |
 ## neogen
 | Keys | Description |
 --- | --- |
@@ -95,10 +100,6 @@ tmux source-file ~/.tmux.conf
 | Keys | Description |
 --- | --- |
 | Control + m | Toggle markdown preview. |
-## inlay_hint (neovim)
-| Keys | Description |
---- | --- |
-| Space + hh | Toggle inlay hint. |
 
 
 ## Others

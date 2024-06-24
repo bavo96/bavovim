@@ -1,9 +1,19 @@
--- Option for keymap
+-- === Option for keymap ===
 local opt = { noremap = true, silent = true }
 -- Load dependencies for keymap
 local builtin = require('telescope.builtin')
 
--- lsp
+-- === MISC ===
+-- Turn off highlighting when search files
+vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
+-- Turn off command history in vim
+vim.keymap.set('n', 'q:', '<Nop>', opt)
+vim.keymap.set('n', 'Q', '<Nop>', opt)
+-- Tab block of code mutiple time
+vim.keymap.set('v', '<Tab>', '>gv', { silent = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { silent = true })
+
+-- === nvim-lspconfig ===
 local lspopt = { buffer = vim.api.nvim_get_current_buf() }
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, lspopt)
@@ -31,19 +41,11 @@ if vim.lsp.inlay_hint then
                 { bufnr = vim.api.nvim_get_current_buf() })
         end)
 end
+-- Show lsp information
+vim.keymap.set('n', '<leader>vv', ':LspInfo<CR>', opt)
 
--- Turn off highlighting when search files
-vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 
--- Turn off command history in vim
-vim.keymap.set('n', 'q:', '<Nop>', opt)
-vim.keymap.set('n', 'Q', '<Nop>', opt)
-
--- Tab block of code mutiple time
-vim.keymap.set('v', '<Tab>', '>gv', { silent = true })
-vim.keymap.set('v', '<S-Tab>', '<gv', { silent = true })
-
--- barbar.nvim
+-- === barbar.nvim ===
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)
 vim.keymap.set('n', '<leader>qa', '<Cmd>BufferCloseAllButCurrent<CR>', opt)
@@ -53,12 +55,12 @@ for i = 1, 10 do
     vim.keymap.set('n', key, '<Cmd>BufferGoto' .. i .. '<CR>', opt)
 end
 
--- Comment.nvim
+-- === Comment.nvim ===
 -- + Map Ctrl+n to toggle comment in normal and visual mode
 vim.keymap.set('n', '<C-n>', '<Plug>(comment_toggle_linewise_current)', opt)
 vim.keymap.set('v', '<C-n>', '<Plug>(comment_toggle_linewise_visual)', opt)
 
--- nvim-tree.lua
+-- === nvim-tree.lua ===
 -- + Toggle nvim-tree
 vim.keymap.set('n', '<C-p>', ':NvimTreeToggle<CR>', opt)
 -- + navigation in Nvim-Tree
@@ -67,16 +69,16 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opt)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opt)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opt)
 
--- lazy.nvim
+-- === lazy.nvim ===
 vim.keymap.set('n', '<leader>ll', ':Lazy home<CR>', opt)
 
--- telescope
+-- === telescope ===
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opt)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, opt)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opt)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, opt)
 
--- toggleterm (maybe only use it for lazygit)
+-- === toggleterm (maybe only use it for lazygit) ===
 vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', opt)
 function _G.set_terminal_keymaps()
     local opts = { buffer = 0 }
@@ -87,16 +89,16 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
--- lazygit
+-- === lazygit ===
 vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
--- Mason
+-- === Mason ===
 vim.api.nvim_set_keymap("n", "<leader>ms", ":Mason<CR>", { noremap = true, silent = true })
 
--- Neogen (docstrings)
+-- === Neogen (docstrings) ===
 vim.api.nvim_set_keymap("n", "<Leader>ds", ":lua require('neogen').generate()<CR>", opt)
 
--- ChatGPT
+-- === ChatGPT ===
 vim.api.nvim_set_keymap("n", "<Leader>cp", "<cmd>ChatGPT<CR>", opt)
 local modes = { "n", "v" }
 for _, mode in ipairs(modes) do
@@ -108,15 +110,15 @@ for _, mode in ipairs(modes) do
     vim.api.nvim_set_keymap(mode, "cg", "<cmd>ChatGPTRun grammar_correction<CR>", opt)
 end
 
--- Copilot
+-- === Copilot ===
 vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false
 })
 vim.g.copilot_no_tab_map = true
 
--- image_preview.nvim
+-- === image_preview.nvim ===
 vim.keymap.set('n', '<leader>p', ':lua require("image_preview").preview()<CR>', opt)
 
--- markdown-preview.nvim
+-- === markdown-preview.nvim ===
 vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreviewToggle', opt)

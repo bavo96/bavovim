@@ -95,6 +95,11 @@ tmux source-file ~/.tmux.conf
 | Keys | Description |
 --- | --- |
 | Control + m | Toggle markdown preview. |
+## inlay_hint (neovim)
+| Keys | Description |
+--- | --- |
+| Space + hh | Toggle inlay hint. |
+
 
 ## Others
 | Keys | Description |

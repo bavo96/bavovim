@@ -5,7 +5,7 @@ if not status_ok then
     return
 end
 
-function set_lsp_keymap(buff)
+local function set_lsp_keymap(buff)
     -- === nvim-lspconfig ===
     local opt = { noremap = true, silent = true }
     local lspopt = { buffer = buff }
@@ -26,17 +26,6 @@ function set_lsp_keymap(buff)
     end, lspopt)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, lspopt)
     vim.keymap.set('n', '<leader>df', vim.lsp.buf.type_definition, lspopt)
-    -- Toggle inlay hint of neovim
-    if vim.lsp.inlay_hint then
-        vim.keymap.set('n', '<leader>hh',
-            function()
-                local hint_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buff })
-                vim.lsp.inlay_hint.enable(not hint_enabled,
-                    { bufnr = buff })
-            end)
-    end
-    -- Show lsp information
-    vim.keymap.set('n', '<leader>vv', ':LspInfo<CR>', opt)
 end
 
 local M = {}

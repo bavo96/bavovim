@@ -13,6 +13,21 @@ vim.keymap.set('n', 'Q', '<Nop>', opt)
 vim.keymap.set('v', '<Tab>', '>gv', { silent = true })
 vim.keymap.set('v', '<S-Tab>', '<gv', { silent = true })
 
+-- === LSP ===
+-- Toggle inlay hint of neovim
+if vim.lsp.inlay_hint then
+    local buff = vim.api.nvim_get_current_buf()
+    vim.keymap.set('n', '<leader>hh',
+        function()
+            local hint_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buff })
+            print(hint_enabled)
+            vim.lsp.inlay_hint.enable(not hint_enabled,
+                { bufnr = buff })
+        end)
+end
+-- Show lsp information
+vim.keymap.set('n', '<leader>vv', ':LspInfo<CR>', opt)
+
 -- === barbar.nvim ===
 -- + Map control+q to quit buffer
 vim.keymap.set('n', '<leader>q', '<Cmd>BufferClose<CR>', opt)

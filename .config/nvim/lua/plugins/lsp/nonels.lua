@@ -5,7 +5,8 @@ return {
     config = function()
         local null_ls = require("null-ls")
         local sources = {
-            null_ls.builtins.diagnostics.buf
+            null_ls.builtins.diagnostics.buf,
+            null_ls.builtins.formatting.isort
         }
 
         require("null-ls").setup({

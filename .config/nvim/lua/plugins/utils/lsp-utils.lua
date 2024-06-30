@@ -57,7 +57,7 @@ function M.settings(server)
             init_options = {
                 settings = {
                     -- Any extra CLI arguments for `ruff` go here.
-                    args = {},
+                    args = { config = "./pyproject.toml" },
                 }
             }
         }

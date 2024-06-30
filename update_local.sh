@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copy all folders in repo to local config
 rsync -a --delete --exclude=plugin/ .config/nvim/ ~/.config/nvim/
 rsync -a --delete --exclude=plugins/ .config/tmux/ ~/.config/tmux/

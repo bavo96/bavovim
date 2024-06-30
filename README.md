@@ -7,8 +7,7 @@ My custom vim's settings.
 ## 1. Installation 
 ### Add configuration
 ```bash
-chmod +x update_local.sh
-./update_local.sh
+bash update_local.sh
 ```
 ### wezterm: 
 - Link: https://wezfurlong.org/wezterm/installation.html (install .deb file)
@@ -35,6 +34,7 @@ chmod +x update_local.sh
 - Link: https://github.com/jesseduffield/lazygit
 ### lsp
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+- Install go for `buf` (protobuf): https://go.dev/dl/
 - Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: `pylsp`, `lua_ls`, `bashls`, `ruff_lsp`
 - Use mason to install dependencies like `isort`, `ruff`
 ### ripgrep (for telescope)

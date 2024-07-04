@@ -8,9 +8,12 @@ return {
             null_ls.builtins.diagnostics.buf,
             null_ls.builtins.formatting.isort
         }
+        -- Load lsp settings
+        local lsputils = require('plugins.utils.lsp-utils');
 
         require("null-ls").setup({
             sources = sources,
+            on_attach = lsputils.on_attach,
         })
     end
 }

@@ -35,8 +35,9 @@ bash update_local.sh
 ### lsp
 - Server configuration for lspconfig: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 - Install go for `buf` (protobuf): https://go.dev/dl/
-- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: `pylsp`, `lua_ls`, `bashls`, `ruff_lsp`
-- Use mason to install dependencies like `isort`, `ruff`
+- Use mason to install LSP servers and setup via lspconfig file. Currently lsp servers: `pylsp`, `lua_ls`, `bashls`, `ruff`
+- Use nonels to install dependencies like `isort`, `buf`
+- Current support: `pylsp`, `lua_ls`, `bashls`, `ruff`, `html`, `cssls`, `isort`, `buf`
 ### ripgrep (for telescope)
 - Link: https://github.com/BurntSushi/ripgrep
 ### color in neovim

@@ -1,13 +1,5 @@
--- Load cmp-nvim-lsp
-local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not status_ok then
-    print('cmp-nvim-lsp is not working. Skipping...')
-    return
-end
-
 local function set_lsp_keymap(buff)
     -- === nvim-lspconfig ===
-    local opt = { noremap = true, silent = true }
     local lspopt = { buffer = buff }
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     vim.keymap.set('n', 'gl', vim.diagnostic.open_float, lspopt)
@@ -52,14 +44,9 @@ function M.settings(server)
                 }
             }
         }
-    elseif server == 'ruff_lsp' then -- ===> Linting, Formatting, Organization Imports in python
+    elseif server == 'ruff' then -- ===> Linting, Formatting, Organization Imports in python
+        -- https://docs.astral.sh/ruff/editors/#language-server-protocol
         return {
-            init_options = {
-                settings = {
-                    -- Any extra CLI arguments for `ruff` go here.
-                    args = { config = "./pyproject.toml" },
-                }
-            }
         }
     elseif server == 'pylsp' then -- ===> Completions, Definitions, Hover, References, Signature Help, and Symbols in Python
         return {
@@ -76,30 +63,35 @@ function M.settings(server)
                     autopep8 = { enabled = false },
                     yapf = { enabled = false },
 
-                    -- Currenlty turn off to use ruff
+                    --Currenlty turn off to use ruff
                     -- Linter
                     flake8 = { enabled = false },
                 },
-                configurationSources = { 'flake8' },
+                configurationSources = {},
             }
         }
-    elseif server == 'pyright' then -- ===> Still keep this for backup. Can use with ruff_lsp: https://github.com/astral-sh/ruff-lsp?tab=readme-ov-file#setup
+    elseif server == 'html' then
+        return {}
+    elseif server == 'cssls' then
         return {
-            python = {
-                analysis = {
-                    autoSearchPaths = true,
-                    diagnosticMode = "workspace",
-                    useLibraryCodeForTypes = true,
-                    typeCheckingMode = 'off'
-                },
-            }
+            css = {
+                validate = true,
+            },
+            scss = {
+                validate = true,
+            },
+            less = {
+                validate = true,
+            },
         }
+    else
+        return {}
     end
 end
 
 function M.on_attach(server, buff)
     -- Disable hover in favor of python lsp server
-    if server.name == 'ruff_lsp' then
+    if server.name == 'ruff' then
         server.server_capabilities.hoverProvider = false
     end
 
@@ -160,7 +152,37 @@ end
 
 function M.capabilities()
     -- Add additional capabilities supported by nvim-cmp
-    return cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    -- Enable (broadcasting) snippet capability for completion
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- return capabilities
+    return nil
+end
+
+function M.init_options(server)
+    if server == "cssls" then
+        return {
+            provideFormatter = true
+        }
+    elseif server == "html" then
+        return {
+            configurationSection = { "html", "css", "javascript" },
+            embeddedLanguages = {
+                css = true,
+                javascript = true
+            },
+            provideFormatter = true
+        }
+    elseif server == "ruff" then
+        return {
+            settings = {
+                logLevel = 'debug',
+                args = { config = "./pyproject.toml" },
+            }
+        }
+    else
+        return {}
+    end
 end
 
 return M

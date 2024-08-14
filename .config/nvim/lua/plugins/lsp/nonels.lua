@@ -11,7 +11,7 @@ return {
         -- Load lsp settings
         local lsputils = require('plugins.utils.lsp-utils');
 
-        require("null-ls").setup({
+        null_ls.setup({
             sources = sources,
             on_attach = lsputils.on_attach,
         })

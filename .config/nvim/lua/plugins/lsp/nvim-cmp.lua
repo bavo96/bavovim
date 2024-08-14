@@ -37,6 +37,8 @@ return {
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
                     },
+                    -- Use <C-e> to close completion
+                    ['<C-e>'] = cmp.mapping.abort(),
                     -- Use <Tab>, <S-Tab> for completion, jump between placeholders
                     ['<Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then

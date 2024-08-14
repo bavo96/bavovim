@@ -63,7 +63,7 @@ function M.settings(server)
                     autopep8 = { enabled = false },
                     yapf = { enabled = false },
 
-                    --Currenlty turn off to use ruff
+                    -- Currenlty turn off to use ruff
                     -- Linter
                     flake8 = { enabled = false },
                 },

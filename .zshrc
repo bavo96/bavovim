@@ -52,7 +52,7 @@ export ARCHFLAGS="-arch arm64"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/nvim-macos-arm64/bin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/nvim-macos-arm64/bin:/opt/homebrew/bin/:/Applications/WezTerm.app/Contents/MacOS"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

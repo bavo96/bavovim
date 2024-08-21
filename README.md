@@ -5,7 +5,7 @@ My custom vim's settings. Currently support Linux and MacOS.
 ![screenshot](./bavovim.png)
 
 ## 1. Prerequisites
-- See [prerequisites.md](./docs/prerequisites.md)
+- See [prerequisite.md](./docs/prerequisite.md)
 ## 2. Installation 
 ### Run the following command:
 ```bash

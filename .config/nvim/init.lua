@@ -1,3 +1,5 @@
+require('global.option')
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
@@ -16,5 +18,4 @@ vim.g.mapleader = " "      -- Make sure to set `mapleader` before lazy so your m
 vim.g.maplocalleader = " " -- Same for `maplocalleader`
 
 require("lazy").setup("plugins")
-require('global.option')
 require('global.keymap')

@@ -59,7 +59,7 @@ vim.opt.cursorline = true
 
 -- Set modifiable to true
 if vim.bo.modifiable then
-   -- Your option setting code here
+    -- Your option setting code here
     vim.bo.modifiable = true
 end
 

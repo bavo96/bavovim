@@ -145,7 +145,12 @@ function M.on_attach(server, buff)
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = buff,
         callback = function()
-            vim.lsp.buf.format { async = false }
+            vim.lsp.buf.format {
+                async = false,
+                filter = function(client)
+                    return client.name == "ruff"
+                end
+            }
         end
     })
 end

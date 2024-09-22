@@ -20,6 +20,16 @@ local function set_lsp_keymap(buff)
     vim.keymap.set('n', '<leader>df', vim.lsp.buf.type_definition, lspopt)
 end
 
+local function has_value (tab, val)
+for index, value in ipairs(tab) do
+    if value == val then
+        return true
+    end
+end
+
+return false
+end
+
 local M = {}
 function M.settings(server)
     if server == 'lua_ls' then
@@ -89,6 +99,7 @@ function M.settings(server)
     end
 end
 
+
 function M.on_attach(server, buff)
     -- Disable hover in favor of python lsp server
     if server.name == 'ruff' then
@@ -141,18 +152,20 @@ function M.on_attach(server, buff)
         ]]
     end
 
+    local formatter = {'ruff'}
+
     -- Auto formatting when saving file
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = buff,
-        callback = function()
-            vim.lsp.buf.format {
-                async = false,
-                filter = function(client)
-                    return client.name == "ruff"
-                end
-            }
-        end
-    })
+    if server.supports_method("textDocument/formatting") and has_value(formatter, server.name) then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = buff,
+            callback = function()
+                vim.lsp.buf.format {
+                    async = false,
+                }
+            end
+        })
+    end
+
 end
 
 function M.capabilities()

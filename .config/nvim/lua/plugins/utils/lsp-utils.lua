@@ -152,15 +152,19 @@ function M.on_attach(server, buff)
         ]]
     end
 
-    local formatter = {'ruff'}
+    local formatter = {'ruff', 'null-ls'}
 
     -- Auto formatting when saving file
     if server.supports_method("textDocument/formatting") and has_value(formatter, server.name) then
+        print("Auto formatting for " .. server.name)
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = buff,
             callback = function()
                 vim.lsp.buf.format {
                     async = false,
+                    filter = function(client)
+                        return client.name == server.name
+                    end
                 }
             end
         })

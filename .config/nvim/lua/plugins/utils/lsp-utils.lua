@@ -20,14 +20,14 @@ local function set_lsp_keymap(buff)
     vim.keymap.set('n', '<leader>df', vim.lsp.buf.type_definition, lspopt)
 end
 
-local function has_value (tab, val)
-for index, value in ipairs(tab) do
-    if value == val then
-        return true
+local function has_value(tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
     end
-end
 
-return false
+    return false
 end
 
 local M = {}
@@ -99,7 +99,6 @@ function M.settings(server)
     end
 end
 
-
 function M.on_attach(server, buff)
     -- Disable hover in favor of python lsp server
     if server.name == 'ruff' then
@@ -152,7 +151,7 @@ function M.on_attach(server, buff)
         ]]
     end
 
-    local formatter = {'ruff', 'null-ls'}
+    local formatter = { 'ruff', 'null-ls', 'lua_ls' }
 
     -- Auto formatting when saving file
     if server.supports_method("textDocument/formatting") and has_value(formatter, server.name) then
@@ -169,7 +168,6 @@ function M.on_attach(server, buff)
             end
         })
     end
-
 end
 
 function M.capabilities()

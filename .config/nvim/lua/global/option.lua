@@ -63,4 +63,3 @@ if vim.bo.modifiable then
     vim.bo.modifiable = true
 end
 
--- vim.opt.deno = '$HOME/.deno/bin/deno'

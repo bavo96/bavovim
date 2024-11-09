@@ -104,4 +104,18 @@ vim.g.copilot_no_tab_map = true
 vim.keymap.set('n', '<leader>p', ':lua require("image_preview").preview()<CR>', opt)
 
 -- === markdown-preview.nvim ===
-vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreviewToggle', opt)
+-- vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreviewToggle', opt)
+
+-- === live-preview.nvim ===
+local live_preview_running = false
+function ToggleLivePreview()
+    if live_preview_running then
+        vim.cmd("LivePreview close")
+        live_preview_running = false
+    else
+        vim.cmd("LivePreview start")
+        live_preview_running = true
+    end
+end
+
+vim.keymap.set('n', '<Leader>r', ':lua ToggleLivePreview()<CR>', opt)

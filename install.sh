@@ -16,7 +16,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     brew install ripgrep
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     echo "Linux detected. Installing necessary packages..."
-    apt-get install ripgrep
+    sudo apt-get install ripgrep
 elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
     echo "Windows is not supported."
 elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]]; then

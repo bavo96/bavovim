@@ -1,5 +1,9 @@
 local indent = 4
 
+-- Disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set key leader
 vim.g.mapleader = " "
 
@@ -59,7 +63,11 @@ vim.opt.cursorline = true
 
 -- Set modifiable to true
 if vim.bo.modifiable then
-    -- Your option setting code here
     vim.bo.modifiable = true
 end
 
+-- Auto reload file when changed
+vim.opt.autoread = true
+
+-- Enable 24-bit colour
+vim.opt.termguicolors = true

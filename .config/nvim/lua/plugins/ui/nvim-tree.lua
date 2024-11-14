@@ -42,6 +42,13 @@ return {
                 disable_for_dirs = {},
                 timeout = 400,
             },
+            update_focused_file = {
+                enable = true,
+                update_root = {
+                    enable = true,
+                },
+            },
+            prefer_startup_root = true,
         }
 
         -- setup with some options

@@ -151,7 +151,7 @@ function M.on_attach(server, buff)
         ]]
     end
 
-    local formatter = { 'ruff', 'null-ls', 'lua_ls' }
+    local formatter = { 'ruff', 'null-ls', 'lua_ls', 'html', 'cssls' }
 
     -- Auto formatting when saving file
     if server.supports_method("textDocument/formatting") and has_value(formatter, server.name) then

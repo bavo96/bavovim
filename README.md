@@ -9,11 +9,11 @@ My custom vim's settings. Currently support Linux and MacOS.
 ## 2. Installation 
 ### Run the following command:
 ```bash
-bash install.sh
+bash install.sh -p -n
 ```
 ### If you only want to update local neovim:
 ```bash
-bash ./scripts/update_local.sh
+bash install.sh -n
 ```
 
 ## 2. Useful mappings

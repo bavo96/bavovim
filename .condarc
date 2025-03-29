@@ -1,0 +1,7 @@
+create_default_packages:
+- ruff==0.5.3
+- python-lsp-server==1.12.0
+- isort==5.13.2
+- # Dependencies
+- spyder==6.0.0
+

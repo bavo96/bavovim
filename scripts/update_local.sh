@@ -4,6 +4,7 @@
 rsync -a --delete --exclude=plugin/ .config/nvim/ ~/.config/nvim/
 rsync -a --delete --exclude=plugins/ .config/tmux/ ~/.config/tmux/
 rsync -a --delete .config/wezterm/ ~/.config/wezterm/
+rsync -a --delete  .condarc ~/.condarc
 if [ "$(uname)" == "Darwin" ]
 then
     rsync -a --delete .zshrc ~/.zshrc

@@ -34,7 +34,7 @@ local function has_value(tab, val)
 end
 
 local M = {}
-M.clients = { 'ruff', 'pylsp', 'lua_ls', 'bashls', 'ts_ls', 'eslint' }
+M.clients = { 'ruff', 'pylsp', 'lua_ls', 'bashls', 'ts_ls', 'eslint', 'stylelint_lsp' }
 function M.settings(client)
     if client == 'lua_ls' then
         return {
@@ -119,6 +119,12 @@ function M.settings(client)
         }
     elseif client == 'ts_ls' then
         return {}
+    elseif client == 'stylelint_lsp' then
+        return {
+            stylelintplus = {
+                -- see available options in stylelint-lsp documentation
+            }
+        }
     else
         return {}
     end
@@ -224,6 +230,11 @@ end
 function M.filetypes(client)
     if client == "ts_ls" then
         return { "typescript", "typescriptreact", "javascript", "javascriptreact" }
+    elseif client == "eslint" then
+        return { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx",
+            "vue", "svelte", "astro" }
+    elseif client == "stylelint_lsp" then
+        return { "css", "less", "scss", "sugarss", "vue", "wxss" }
     elseif client == "lua_ls" then
         return { "lua" }
     elseif client == "pylsp" then

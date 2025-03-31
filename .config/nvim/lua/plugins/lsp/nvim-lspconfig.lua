@@ -6,15 +6,14 @@ return {
         local lsputils = require('plugins.utils.lsp-utils');
 
         -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-        local servers = { 'pylsp', 'ruff', 'lua_ls', 'bashls', 'html', 'cssls' };
-
-        for _, server in ipairs(servers) do
-            require("lspconfig")[server].setup(
+        for _, client in ipairs(lsputils.clients) do
+            require("lspconfig")[client].setup(
                 {
-                    settings = lsputils.settings(server),
-                    on_attach = lsputils.on_attach,
+                    settings = lsputils.settings(client),
+                    init_options = lsputils.init_options(client),
+                    filetypes = lsputils.filetypes(client),
                     capabilities = lsputils.capabilities(),
-                    init_options = lsputils.init_options(server),
+                    on_attach = lsputils.on_attach,
                 }
 
             )

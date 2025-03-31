@@ -1,3 +1,6 @@
+-- local formatter = { ['python'] = 'ruff', = 'lua_ls', 'bashls' }
+local formatter = { 'ruff', 'null-ls', 'lua_ls', 'bashls' }
+
 local function set_lsp_keymap(buff)
     -- === nvim-lspconfig ===
     local lspopt = { buffer = buff }
@@ -21,7 +24,7 @@ local function set_lsp_keymap(buff)
 end
 
 local function has_value(tab, val)
-    for index, value in ipairs(tab) do
+    for _, value in ipairs(tab) do
         if value == val then
             return true
         end
@@ -31,8 +34,9 @@ local function has_value(tab, val)
 end
 
 local M = {}
-function M.settings(server)
-    if server == 'lua_ls' then
+M.clients = { 'ruff', 'pylsp', 'lua_ls', 'bashls', 'ts_ls', 'eslint' }
+function M.settings(client)
+    if client == 'lua_ls' then
         return {
             Lua = {
                 runtime = {
@@ -46,7 +50,7 @@ function M.settings(server)
                 hint = { enable = true }
             }
         }
-    elseif server == 'bashls' then
+    elseif client == 'bashls' then
         return {
             {
                 bashIde = {
@@ -54,11 +58,11 @@ function M.settings(server)
                 }
             }
         }
-    elseif server == 'ruff' then -- ===> Linting, Formatting, Organization Imports in python
+    elseif client == 'ruff' then -- ===> Linting, Formatting, Organization Imports in python
         -- https://docs.astral.sh/ruff/editors/#language-server-protocol
         return {
         }
-    elseif server == 'pylsp' then -- ===> Completions, Definitions, Hover, References, Signature Help, and Symbols in Python
+    elseif client == 'pylsp' then -- ===> Completions, Definitions, Hover, References, Signature Help, and Symbols in Python
         return {
             pylsp = {
                 plugins = {
@@ -80,29 +84,50 @@ function M.settings(server)
                 configurationSources = {},
             }
         }
-    elseif server == 'html' then
-        return {}
-    elseif server == 'cssls' then
+    elseif client == 'eslint' then
         return {
-            css = {
-                validate = true,
+            codeAction = {
+                disableRuleComment = {
+                    enable = true,
+                    location = "separateLine"
+                },
+                showDocumentation = {
+                    enable = true
+                }
             },
-            scss = {
-                validate = true,
+            codeActionOnSave = {
+                enable = false,
+                mode = "all"
             },
-            less = {
-                validate = true,
+            experimental = {
+                useFlatConfig = false
             },
+            format = true,
+            nodePath = "",
+            onIgnoredFiles = "off",
+            problems = {
+                shortenToSingleLine = false
+            },
+            quiet = false,
+            rulesCustomizations = {},
+            run = "onType",
+            useESLintClass = false,
+            validate = "on",
+            workingDirectory = {
+                mode = "location"
+            }
         }
+    elseif client == 'ts_ls' then
+        return {}
     else
         return {}
     end
 end
 
-function M.on_attach(server, buff)
+function M.on_attach(client, buff)
     -- Disable hover in favor of python lsp server
-    if server.name == 'ruff' then
-        server.server_capabilities.hoverProvider = false
+    if client.name == 'ruff' then
+        client.server_capabilities.hoverProvider = false
     end
 
     -- Set lsp keymap
@@ -121,6 +146,12 @@ function M.on_attach(server, buff)
             source = "always",
             header = "",
             prefix = "",
+            format = function(diagnostic)
+                if diagnostic.source then
+                    return string.format("%s: %s", diagnostic.source, diagnostic.message)
+                end
+                return diagnostic.message
+            end,
         },
     }
 
@@ -141,7 +172,7 @@ function M.on_attach(server, buff)
 
     -- Auto document highlighting
     -- https://github.com/haskell/haskell-language-server/issues/1148 (change to server_capabilities)
-    if server.server_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         vim.cmd [[
             augroup document_highlight
                 autocmd! * <buffer>
@@ -151,19 +182,17 @@ function M.on_attach(server, buff)
         ]]
     end
 
-    local formatter = { 'ruff', 'null-ls', 'lua_ls', 'html', 'cssls', 'bashls' }
-
     -- Auto formatting when saving file
-    if server.supports_method("textDocument/formatting") and has_value(formatter, server.name) then
-        print("Auto formatting for " .. server.name)
+    if client.supports_method("textDocument/formatting") and has_value(formatter, client.name) then
+        print(string.format("%s auto formatting...", client.name))
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = buff,
             callback = function()
                 vim.lsp.buf.format {
                     async = false,
-                    filter = function(client)
-                        return client.name == server.name
-                    end
+                    filter = function(_client)
+                        return _client.name == client.name
+                    end,
                 }
             end
         })
@@ -179,27 +208,30 @@ function M.capabilities()
     return nil
 end
 
-function M.init_options(server)
-    if server == "cssls" then
-        return {
-            provideFormatter = true
-        }
-    elseif server == "html" then
-        return {
-            configurationSection = { "html", "css", "javascript" },
-            embeddedLanguages = {
-                css = true,
-                javascript = true
-            },
-            provideFormatter = true
-        }
-    elseif server == "ruff" then
+function M.init_options(client)
+    if client == "ruff" then
         return {
             settings = {
                 logLevel = 'debug',
                 args = { config = "./pyproject.toml" },
             }
         }
+    else
+        return {}
+    end
+end
+
+function M.filetypes(client)
+    if client == "ts_ls" then
+        return { "typescript", "typescriptreact", "javascript", "javascriptreact" }
+    elseif client == "lua_ls" then
+        return { "lua" }
+    elseif client == "pylsp" then
+        return { "python" }
+    elseif client == "ruff" then
+        return { "python" }
+    elseif client == "bashls" then
+        return { "sh", "bash" }
     else
         return {}
     end

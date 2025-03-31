@@ -6,7 +6,8 @@ return {
         local null_ls = require("null-ls")
         local sources = {
             null_ls.builtins.diagnostics.buf,
-            null_ls.builtins.formatting.isort
+            null_ls.builtins.formatting.isort,
+            null_ls.builtins.formatting.prettierd,
         }
         -- Load lsp settings
         local lsputils = require('plugins.utils.lsp-utils');

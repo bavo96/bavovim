@@ -9,6 +9,9 @@ vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 -- Turn off command history in vim
 vim.keymap.set('n', 'q:', '<nop>', opt)
 vim.keymap.set('n', 'Q', '<nop>', opt)
+-- Disable macro recording and execution
+vim.keymap.set('n', 'q', '<nop>', { noremap = true, silent = true })
+vim.keymap.set('n', '@', '<nop>', { noremap = true, silent = true })
 
 -- Tab block of code mutiple time
 vim.keymap.set('v', '<Tab>', '>gv', { silent = true })

@@ -7,8 +7,9 @@ local builtin = require('telescope.builtin')
 -- Turn off highlighting when search files
 vim.keymap.set('n', '<leader>a', ':noh<CR>', opt)
 -- Turn off command history in vim
-vim.keymap.set('n', 'q:', '<Nop>', opt)
-vim.keymap.set('n', 'Q', '<Nop>', opt)
+vim.keymap.set('n', 'q:', '<nop>', opt)
+vim.keymap.set('n', 'Q', '<nop>', opt)
+
 -- Tab block of code mutiple time
 vim.keymap.set('v', '<Tab>', '>gv', { silent = true })
 vim.keymap.set('v', '<S-Tab>', '<gv', { silent = true })

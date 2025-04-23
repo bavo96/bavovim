@@ -34,7 +34,7 @@ local function has_value(tab, val)
 end
 
 local M = {}
-M.clients = { 'ruff', 'pylsp', 'lua_ls', 'bashls', 'ts_ls', 'eslint', 'stylelint_lsp' }
+M.clients = { 'ruff', 'lua_ls', 'bashls', 'ts_ls', 'eslint', 'stylelint_lsp' }
 function M.settings(client)
     if client == 'lua_ls' then
         return {
@@ -61,28 +61,6 @@ function M.settings(client)
     elseif client == 'ruff' then -- ===> Linting, Formatting, Organization Imports in python
         -- https://docs.astral.sh/ruff/editors/#language-server-protocol
         return {
-        }
-    elseif client == 'pylsp' then -- ===> Completions, Definitions, Hover, References, Signature Help, and Symbols in Python
-        return {
-            pylsp = {
-                plugins = {
-                    -- Turn these off to use flake8, see: https://github.com/python-lsp/python-lsp-server
-                    pycodestyle = {
-                        enabled = false,
-                    },
-                    mccabe = { enabled = false },
-                    pyflakes = { enabled = false },
-
-                    -- Turn these off to use black, see: https://github.com/python-lsp/python-lsp-black
-                    autopep8 = { enabled = false },
-                    yapf = { enabled = false },
-
-                    -- Currenlty turn off to use ruff
-                    -- Linter
-                    flake8 = { enabled = false },
-                },
-                configurationSources = {},
-            }
         }
     elseif client == 'eslint' then
         return {
@@ -237,8 +215,6 @@ function M.filetypes(client)
         return { "css", "less", "scss", "sugarss", "vue", "wxss" }
     elseif client == "lua_ls" then
         return { "lua" }
-    elseif client == "pylsp" then
-        return { "python" }
     elseif client == "ruff" then
         return { "python" }
     elseif client == "bashls" then

@@ -15,7 +15,6 @@ return {
                     capabilities = lsputils.capabilities(),
                     on_attach = lsputils.on_attach,
                 }
-
             )
         end;
     end

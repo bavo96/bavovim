@@ -34,7 +34,7 @@ local function has_value(tab, val)
 end
 
 local M = {}
-M.clients = { 'ruff', 'lua_ls', 'bashls', 'ts_ls', 'eslint', 'stylelint_lsp' }
+M.clients = { 'ruff', 'lua_ls', 'bashls', 'ts_ls', 'eslint', 'stylelint_lsp', 'basedpyright' }
 function M.settings(client)
     if client == 'lua_ls' then
         return {
@@ -101,6 +101,16 @@ function M.settings(client)
         return {
             stylelintplus = {
                 -- see available options in stylelint-lsp documentation
+            }
+        }
+    elseif client == 'basedpyright' then
+        return {
+            basedpyright = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "openFilesOnly",
+                    useLibraryCodeForTypes = true
+                }
             }
         }
     else
@@ -216,6 +226,8 @@ function M.filetypes(client)
     elseif client == "lua_ls" then
         return { "lua" }
     elseif client == "ruff" then
+        return { "python" }
+    elseif client == "basedpyright" then
         return { "python" }
     elseif client == "bashls" then
         return { "sh", "bash" }

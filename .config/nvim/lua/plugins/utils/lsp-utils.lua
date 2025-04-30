@@ -109,7 +109,9 @@ function M.settings(client)
                 analysis = {
                     autoSearchPaths = true,
                     diagnosticMode = "openFilesOnly",
-                    useLibraryCodeForTypes = true
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = "basic",
+                    logLevel = "Error"
                 }
             }
         }

@@ -34,6 +34,16 @@ return {
                     max_tokens = 32768,
                 },
             },
+            openai = {
+                endpoint = "https://api.openai.com/v1",
+                model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+                timeout = 30000,  -- Timeout in milliseconds, increase this for reasoning models
+                extra_request_body = {
+                    temperature = 0.75,
+                    max_tokens = 8192,
+                },
+            }
+
         },
     },
     dependencies = {

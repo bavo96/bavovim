@@ -6,3 +6,4 @@ create_default_packages:
 - basedpyright==1.29.0
 - isort==5.13.2
 - spyder==6.0.0
+changeps1: False

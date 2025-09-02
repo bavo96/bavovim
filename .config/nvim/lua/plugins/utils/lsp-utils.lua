@@ -110,7 +110,7 @@ function M.settings(client)
                     autoSearchPaths = true,
                     diagnosticMode = "openFilesOnly",
                     useLibraryCodeForTypes = true,
-                    typeCheckingMode = "basic",
+                    typeCheckingMode = "off",
                     logLevel = "Error"
                 }
             }

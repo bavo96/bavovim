@@ -2,8 +2,8 @@ channels:
 - defaults
 - conda-forge
 create_default_packages:
-- ruff==0.5.3
-- basedpyright==1.29.0
-- isort==5.13.2
-- spyder==6.0.0
-changeps1: False
+- ruff==0.14.9
+- basedpyright==1.36.1
+- isort==7.0.0
+- spyder==6.1.1
+changeps1: True

@@ -14,43 +14,23 @@ return {
         -- this file can contain specific instructions for your project
         instructions_file = "avante.md",
         -- for example
-        provider = "claude",
+        provider = "copilot",
         providers = {
-            claude = {
-                endpoint = "https://api.anthropic.com",
-                model = "claude-sonnet-4-20250514",
+            copilot = {
+                model = "claude-sonnet-4.6",
                 timeout = 30000, -- Timeout in milliseconds
                 extra_request_body = {
                     temperature = 0.75,
                     max_tokens = 20480,
                 },
             },
-            moonshot = {
-                endpoint = "https://api.moonshot.ai/v1",
-                model = "kimi-k2-0711-preview",
-                timeout = 30000, -- Timeout in milliseconds
-                extra_request_body = {
-                    temperature = 0.75,
-                    max_tokens = 32768,
-                },
-            },
-            openai = {
-                endpoint = "https://api.openai.com/v1",
-                model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-                timeout = 30000,  -- Timeout in milliseconds, increase this for reasoning models
-                extra_request_body = {
-                    temperature = 0.75,
-                    max_tokens = 8192,
-                },
-            }
-
         },
     },
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         --- The below dependencies are optional,
-        "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+        "nvim-mini/mini.pick",           -- for file_selector provider mini.pick
         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
         "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
         "ibhagwan/fzf-lua",              -- for file_selector provider fzf

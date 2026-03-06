@@ -17,7 +17,7 @@ return {
         provider = "copilot",
         providers = {
             copilot = {
-                model = "claude-sonnet-4.6",
+                model = "claude-haiku-4.5",
                 timeout = 30000, -- Timeout in milliseconds
                 extra_request_body = {
                     temperature = 0.75,
@@ -25,6 +25,7 @@ return {
                 },
             },
         },
+
     },
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -37,7 +38,6 @@ return {
         "stevearc/dressing.nvim",        -- for input provider dressing
         "folke/snacks.nvim",             -- for input provider snacks
         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",        -- for providers='copilot'
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",

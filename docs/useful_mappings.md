@@ -47,6 +47,7 @@ tmux source-file ~/.tmux.conf
 --- | --- |
 | Space + ff | Find files in current parent directory. |
 | Space + fg | Grep text in current parent directory. |
+| Space + fx | Grep text (exact match) in current parent directory. |
 ## lazygit 
 | Keys | Description |
 --- | --- |

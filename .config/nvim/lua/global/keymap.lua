@@ -64,6 +64,14 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, opt)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, opt)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opt)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, opt)
+vim.keymap.set('n', '<leader>fx', function()
+    builtin.live_grep({
+        prompt_title = "Live Grep (Exact Match Only)",
+        additional_args = function(args)
+            return { "--word-regexp" }
+        end
+    })
+end, { desc = 'Live Grep (Exact Match Only)' })
 
 -- === toggleterm (maybe only use it for lazygit) ===
 vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', opt)

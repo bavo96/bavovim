@@ -208,7 +208,7 @@ function M.init_options(client)
     if client == "ruff" then
         return {
             settings = {
-                logLevel = 'debug',
+                logLevel = 'error',
                 args = { config = "./pyproject.toml" },
             }
         }

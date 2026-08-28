@@ -58,6 +58,8 @@ vim.opt.scrolloff = 7
 vim.opt.number = true
 vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.swapfile = false
+vim.opt.undolevels = 1000 -- cap undo history per buffer (nvim default, set explicitly)
+vim.opt.undoreload = 5000 -- cap lines saved for undo on file reload (default 10000)
 vim.opt.mouse:append { a }
 vim.opt.cursorline = true
 

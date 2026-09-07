@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 local io = require 'io'
+local mux = wezterm.mux
 
 local os_name = io.popen("uname"):read('*l')
 
@@ -10,6 +11,64 @@ local function set_brightness()
         return 0.6 -- for Darwin
     end
 end
+
+-- Restore WezTerm tabs on relaunch: read the tmux session names that
+-- tmux-resurrect last saved to disk, and open one tab per session,
+-- attaching to it (or creating it if it doesn't exist yet).
+local function saved_tmux_session_names()
+    local names = {}
+    local f = io.open(wezterm.home_dir .. '/.tmux/resurrect/last', 'r')
+    if not f then
+        return names
+    end
+    for line in f:lines() do
+        local fields = {}
+        for field in line:gmatch('[^\t]+') do
+            table.insert(fields, field)
+        end
+        if fields[1] == 'pane' and fields[2] then
+            names[fields[2]] = true
+        end
+    end
+    f:close()
+
+    local list = {}
+    for name in pairs(names) do
+        table.insert(list, name)
+    end
+    table.sort(list)
+    return list
+end
+
+wezterm.on('gui-startup', function(cmd)
+    local names = saved_tmux_session_names()
+    if #names == 0 then
+        names = { 'main' } -- fallback when nothing has been saved yet
+    end
+
+    local window
+    for i, name in ipairs(names) do
+        local args
+        if i == 1 then
+            -- first tab starts the tmux server; continuum's restore hook
+            -- runs off this and recreates all saved sessions/windows/panes
+            args = { 'tmux', 'new-session', '-A', '-s', name }
+        else
+            -- give continuum's restore a head start so this doesn't race
+            -- it and create an empty duplicate session
+            args = { 'sh', '-c', 'sleep 1.5; exec tmux new-session -A -s ' .. name }
+        end
+
+        if i == 1 then
+            local tab, pane
+            tab, pane, window = mux.spawn_window { args = args }
+            tab:set_title(name)
+        else
+            local tab = window:spawn_tab { args = args }
+            tab:set_title(name)
+        end
+    end
+end)
 
 return {
     front_end = "WebGpu",

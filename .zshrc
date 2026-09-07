@@ -81,3 +81,9 @@ if [ -f '/Users/bavo/Desktop/viwixtech/google-cloud-sdk/path.zsh.inc' ]; then . 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/bavo/Desktop/viwixtech/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bavo/Desktop/viwixtech/google-cloud-sdk/completion.zsh.inc'; fi
+
+# OpenClaw Completion
+source "/Users/bavo/.openclaw/completions/openclaw.zsh"
+
+# Added by Antigravity
+export PATH="/Users/bavo/.antigravity/antigravity/bin:$PATH"

@@ -6,10 +6,12 @@ usage() {
     echo " -h, --help      Display this help message"
     echo " -p, --pre       FILE Specify an output file"
     echo " -n, --neovim    Install neovim"
+    echo " -g, --guard     Install the nvim heap guard (auto-restarts long-lived/heavy nvim panes)"
 }
 
 install_pre=0
 install_neovim=0
+install_guard=0
 
 # Loop through all the arguments
 while [[ "$#" -gt 0 ]]; do
@@ -19,6 +21,9 @@ while [[ "$#" -gt 0 ]]; do
         ;;
     -n | --neovim)
         install_neovim=1
+        ;;
+    -g | --guard)
+        install_guard=1
         ;;
     -h | --help)
         usage
@@ -57,4 +62,9 @@ if [[ $install_neovim == 1 ]]; then
     echo "Installing neovim..."
     ### Copy neovim config files
     bash ./scripts/update_local.sh
+fi
+
+if [[ $install_guard == 1 ]]; then
+    echo "Installing nvim heap guard..."
+    bash ./scripts/install_nvim_guard.sh
 fi

@@ -15,9 +15,38 @@ end
 -- Restore WezTerm tabs on relaunch: read the tmux session names that
 -- tmux-resurrect last saved to disk, and open one tab per session,
 -- attaching to it (or creating it if it doesn't exist yet).
+--
+-- tmux-resurrect saves to ~/.tmux/resurrect only if that directory already
+-- exists; otherwise it falls back to the XDG path
+-- ($XDG_DATA_HOME or ~/.local/share)/tmux/resurrect. Mirror that same
+-- resolution here so this doesn't silently point at a file that's never
+-- written (which used to make every relaunch fall back to a single "main"
+-- tab, dropping every other saved session).
+local function dir_exists(path)
+    local p = io.popen('[ -d "' .. path .. '" ] && echo yes')
+    if not p then
+        return false
+    end
+    local result = p:read('*l')
+    p:close()
+    return result == 'yes'
+end
+
+local function resurrect_last_path()
+    local legacy_dir = wezterm.home_dir .. '/.tmux/resurrect'
+    if dir_exists(legacy_dir) then
+        return legacy_dir .. '/last'
+    end
+    local xdg_data_home = os.getenv('XDG_DATA_HOME')
+    if xdg_data_home and xdg_data_home ~= '' then
+        return xdg_data_home .. '/tmux/resurrect/last'
+    end
+    return wezterm.home_dir .. '/.local/share/tmux/resurrect/last'
+end
+
 local function saved_tmux_session_names()
     local names = {}
-    local f = io.open(wezterm.home_dir .. '/.tmux/resurrect/last', 'r')
+    local f = io.open(resurrect_last_path(), 'r')
     if not f then
         return names
     end
@@ -71,6 +100,16 @@ wezterm.on('gui-startup', function(cmd)
 end)
 
 return {
+    -- GUI-launched WezTerm (Spotlight/Dock, not a Terminal) does NOT source
+    -- ~/.zshrc, so it inherits macOS's bare default PATH
+    -- ("/usr/bin:/bin:/usr/sbin:/sbin"). mux.spawn_window's `tmux` gui-startup
+    -- calls above exec the "tmux" binary directly (no shell), so if it's only
+    -- reachable via Homebrew (/opt/homebrew/bin) this fails with:
+    --   "No viable candidates found in PATH ..." / process didn't exit cleanly
+    -- Fix: explicitly extend PATH for everything WezTerm spawns.
+    set_environment_variables = {
+        PATH = '/opt/homebrew/bin:/usr/local/bin:' .. (os.getenv('PATH') or ''),
+    },
     front_end = "WebGpu",
     prefer_egl = true,
     font = wezterm.font_with_fallback {

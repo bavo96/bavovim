@@ -69,32 +69,82 @@ local function saved_tmux_session_names()
     return list
 end
 
+local function shell_sleep(seconds)
+    local p = io.popen('sleep ' .. tostring(seconds))
+    if p then
+        p:close()
+    end
+end
+
+local function live_tmux_session_names()
+    local names = {}
+    local p = io.popen('tmux list-sessions -F "#{session_name}" 2>/dev/null')
+    if not p then
+        return names
+    end
+    for line in p:lines() do
+        names[line] = true
+    end
+    p:close()
+    return names
+end
+
+local function all_sessions_present(expected, current)
+    for _, name in ipairs(expected) do
+        if not current[name] then
+            return false
+        end
+    end
+    return true
+end
+
+-- Block (this only delays GUI startup once, not per-frame) until
+-- tmux-continuum's background restore has recreated every expected
+-- session, or until timeout_secs have passed -- whichever comes first.
+--
+-- continuum's restore script sleeps 1s before invoking tmux-resurrect's
+-- restore.sh, so there's no point polling before that.
+local function wait_for_restore(expected_names, timeout_secs)
+    shell_sleep(1.2)
+    local waited = 1.2
+    while waited < timeout_secs do
+        if all_sessions_present(expected_names, live_tmux_session_names()) then
+            return
+        end
+        shell_sleep(0.3)
+        waited = waited + 0.3
+    end
+end
+
 wezterm.on('gui-startup', function(cmd)
     local names = saved_tmux_session_names()
     if #names == 0 then
         names = { 'main' } -- fallback when nothing has been saved yet
     end
 
-    local window
-    for i, name in ipairs(names) do
-        local args
-        if i == 1 then
-            -- first tab starts the tmux server; continuum's restore hook
-            -- runs off this and recreates all saved sessions/windows/panes
-            args = { 'tmux', 'new-session', '-A', '-s', name }
-        else
-            -- give continuum's restore a head start so this doesn't race
-            -- it and create an empty duplicate session
-            args = { 'sh', '-c', 'sleep 1.5; exec tmux new-session -A -s ' .. name }
-        end
+    -- Start the tmux server through exactly ONE client: tmux-continuum
+    -- decides whether to auto-restore by counting how many tmux processes
+    -- exist at server startup (tmux-continuum/scripts/helpers.sh,
+    -- another_tmux_server_running_on_startup). If we spawn all N tabs'
+    -- `tmux new-session` clients up front (even staggered by a fixed
+    -- sleep), continuum can see more than one tmux process during that
+    -- check, assume another server is already running, and silently skip
+    -- the restore -- every tab then ends up as a bare empty session
+    -- instead of resurrect replaying saved windows/panes/cwd.
+    --
+    -- So: spawn only the first session here (the lone tmux process),
+    -- actually wait for continuum's restore to finish (poll instead of
+    -- guessing a fixed delay), then open the rest as plain attaches to
+    -- whatever sessions the restore produced.
+    local tab, pane, window = mux.spawn_window { args = { 'tmux', 'new-session', '-A', '-s', names[1] } }
+    tab:set_title(names[1])
 
-        if i == 1 then
-            local tab, pane
-            tab, pane, window = mux.spawn_window { args = args }
-            tab:set_title(name)
-        else
-            local tab = window:spawn_tab { args = args }
-            tab:set_title(name)
+    if #names > 1 then
+        wait_for_restore(names, 8)
+        for i = 2, #names do
+            local name = names[i]
+            local t = window:spawn_tab { args = { 'tmux', 'new-session', '-A', '-s', name } }
+            t:set_title(name)
         end
     end
 end)
